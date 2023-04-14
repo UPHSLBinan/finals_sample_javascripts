@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+
+        function sanchezPatrick() {
+            document.getElementById("demo").innerHTML = "This is the function call";
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <h2>My First JavaScript</h2>
+
+
+    <p id="demo">target demo tag</p>
+
+    <br>______________________ <br><br>
+
+
+    <button type="button"
+            onclick="document.getElementById('demo').innerHTML= 'Sanchez Patrick Jayson' ">
+        my name
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('demo').innerHTML= Date() ">
+        Date and time now
+    </button>
+
+
+    <button type="button" onclick="sanchezPatrick()">
+        functionCall
+    </button>
+
+    <br>______________________ <br><br>
+
+
+    <button type="button"
+            onclick="document.getElementById('demo').style.fontSize='55px'">
+        Sizing
+    </button>
+    <button type="button"
+            onclick="document.getElementById('demo').style.fontSize='15px'">
+        Sizing
+    </button>
+
+    <br>______________________ <br><br>
+
+
+    <button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
+
+    <img id="myImage" src="pic_bulboff.gif" style="width:100px">
+
+    <button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+
+
+
+
+    <br /><br />_____________________<br />
+</body>
+</html> 
