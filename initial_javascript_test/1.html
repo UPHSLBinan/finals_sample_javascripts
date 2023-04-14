@@ -40,6 +40,10 @@
         student name
     </button>
 
+    <button type="button" onclick="testCall()">
+        test call
+    </button>
+
     <br>______________________ <br><br>
 
 
@@ -70,6 +74,10 @@
         const students = ["mega mind", " bon ", " francis"];
         function callMyStudent() {
             document.getElementById("demo").innerHTML = students;
+        }
+
+        function testCall() {
+            document.getElementById("demo").innerHTML = students[0];
         }
     </script>
 </body>
