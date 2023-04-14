@@ -24,7 +24,7 @@ Programmer:
 
 
 <button type="button"
-onclick= "viernesEmmanuel()">
+onclick= "callHotel()">
 functionCall
 </button>
 
@@ -57,6 +57,16 @@ ANONG PETSA ANONG ORAS
 
 <button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
 
+
+
+<br>___________________________________________<br><br>
+
+<script>
+   const hotel = ["SOGO", "The Wharf", "Monti"];
+   function callHotel() {
+   document.getElementById ("demo").innerHTML = hotel;
+}
+</script>
 
 
 
