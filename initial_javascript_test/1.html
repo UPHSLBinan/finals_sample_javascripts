@@ -35,6 +35,11 @@
         functionCall
     </button>
 
+
+    <button type="button" onclick="callMyStudent()">
+        student name
+    </button>
+
     <br>______________________ <br><br>
 
 
@@ -60,5 +65,12 @@
 
 
     <br /><br />_____________________<br />
+
+    <script>
+        const students = ["mega mind", " bon ", " francis"];
+        function callMyStudent() {
+            document.getElementById("demo").innerHTML = students;
+        }
+    </script>
 </body>
 </html> 
