@@ -2,9 +2,20 @@
 <html>
 <head>
 	<script>
+		
 		function Ruzel(){
 	    document.getElementById("demo").innerHTML = "INAY KUPO";
 		}
+		
+		const gameList = ["Knives out"," Valorant"," Call of Duty"];
+	    function Games(){
+		document.getElementById('demo').innerHTML = gameList;
+     	}
+		
+		function topOneGame(){
+		document.getElementById('demo').innerHTML = gameList[0];	
+		}
+		
 	</script>
 </head>	
 	
@@ -31,6 +42,11 @@
 	
 	<br>_______________________<br><br>
 	
+	<button type="button" onclick="Games()" style="background:#C55556">Favorite Games</button>
+	<button type="button" onclick="topOneGame()" style="background:#C55556">Top 1 Game</button>
+	
+	<br>_______________________<br><br>
+	
 	<button type="button" onclick="document.getElementById('demo').style.fontSize='35px'" style="background:#C55556">Resize font size to 35px</button>
 	<button type="button" onclick="document.getElementById('demo').style.fontSize='15px'" style="background:#C55556">Resize font size to 15px</button>
 	
@@ -45,9 +61,6 @@
     <img id="myImage" src="picone.gif" style="width:100px">
 
     <button onclick="document.getElementById('myImage').src='picone.gif'" style="background: #C55556">Turn off the light</button>
-	
-	
-	
 
 </body>
 </html> 
