@@ -28,6 +28,12 @@ onclick= "callHotel()">
 functionCall
 </button>
 
+<button type="button"
+onclick= "tryCall()">
+Pili ng Isa
+</button>
+
+
 
 
 
@@ -65,6 +71,10 @@ ANONG PETSA ANONG ORAS
    const hotel = ["SOGO", "The Wharf", "Monti"];
    function callHotel() {
    document.getElementById ("demo").innerHTML = hotel;
+}
+
+   function tryCall() {
+   document.getElementById ("demo").innerHTML = hotel[1];
 }
 </script>
 
