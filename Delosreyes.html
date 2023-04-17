@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function myFunction() {
+  document.getElementById('demo').innerHTML = "Delosreyes,Jenhar E.";
+}
+function myDate() {
+ document.getElementById('demo').innerHTML = Date();
+}
+
+function pawak(){
+ document.getElementById('demo').innerHTML = "Delosreyes, Jenhar E.";
+ document.getElementById('demo').style.fontSize = '20px';
+ document.getElementById('demo').style.color= 'black';
+}
+</script>
+
+</head>
+<body>
+
+<h2>My First JavaScript</h2>
+
+<button type="button"onclick="myDate()">Date</button>
+
+<button type="button" onclick="myFunction()">Run</button>
+
+<button type="button"onclick="document.getElementById('demo').style.fontSize='60px'">Big</button>
+
+<button type="button"onclick="document.getElementById('demo').style.fontSize='20px'">Small</button>
+
+<button type="button"onclick="document.getElementById('demo').style.color='red'">Red</button>
+
+<button type="button"onclick="document.getElementById('demo').style.color='black'">Black</button>
+
+<button type="button"onclick="document.getElementById('demo').style.color='blue'">Blue</button>
+
+<p id="demo" onmouseover="aywan()"></p>
+
+<br><br>-----------------------------------------------------------------------------------</br></br>
+
+<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Switch on the light</button>
+
+<img id="myImage" src="pic_bulboff.gif" style="width:100px">
+
+<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Switch off the light</button>
+
+<br><br>-----------------------------------------------------------------------------------</br></br>
+
+<h2>JavaScript Statements</h2>
+
+<p>JavaScript statements are separated by semicolons.</p>
+
+<p id="demo1"></p>
+
+<script>
+let a, b, c;
+a = 5;
+b = 6;
+c = a + b;
+document.getElementById("demo1").innerHTML = c;
+</script>
+
+<br><br>-----------------------------------------------------------------------------------</br></br>
+
+<p id="demo2"></p>
+
+<script>
+const cars = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo2").innerHTML = cars[1];
+</script>
+
+</body>
+</html>
