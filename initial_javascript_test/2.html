@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    <title></title>
+
+    <script>
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "Sanchez, Patrick.";
+        }
+
+
+        function myDate() {
+            document.getElementById("demo").innerHTML = Date();
+        }
+
+        function pawak() {
+            document.getElementById("demo").innerHTML = "Sanchez, Patrick.";
+            document.getElementById('demo').style.fontSize = '15px';
+            document.getElementById('demo').style.color = 'black';
+
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <h2>My First JavaScript</h2>
+
+    <button type="button" onclick="myDate()">        Date    </button>
+
+
+    <button type="button" onclick="myFunction()">Try it</button>
+
+
+
+    <button type="button"
+            onclick="document.getElementById('demo').style.fontSize='55px'">
+        Sizing
+    </button>
+    <button type="button"
+            onclick="document.getElementById('demo').style.fontSize='15px'">
+        Sizing
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('demo').style.color='red'">
+        red
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('demo').style.color='black'">
+        black
+    </button>
+
+    <button type="button"
+            onclick="document.getElementById('demo').style.color='blue'">
+        blue
+    </button>
+
+
+    <p id="demo" onmouseover="pawak()">This isz itz</p>
+
+
+    <br />____________________<br /><br />
+
+
+
+    <button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
+
+    <img id="myImage" src="pic_bulboff.gif" style="width:100px">
+
+    <button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+
+
+    <br />___________________<br /><br />
+
+
+    <p id="daemon"></p>
+
+    <script>
+        let a, b, c;
+        a = 5;
+        b = 6;
+        c = a + b;
+        document.getElementById("daemon").innerHTML = c;
+    </script>
+
+    <br />___________________<br /><br />
+
+
+    <p id="mon"></p>
+
+
+    <script>
+        const cars = ["Saab", "Volvo", "BMW", "ETO YOONG MALI"];
+        document.getElementById("mon").innerHTML = cars[1];
+    </script>
+
+
+
+</body>
+
+</html>
