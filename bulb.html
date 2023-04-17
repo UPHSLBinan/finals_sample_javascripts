@@ -3,17 +3,23 @@
 <body>
 <head>
 <script>
+
+function myFunction1() {
+  document.getElementById("demo").innerHTML = Date();
+}
+
 function myFunction() {
   document.getElementById("demo").innerHTML = "Ariado, Reniel.";
 }
+
+
+
 </script>
 </head>
 
 <h2>My First JavaScript</h2>
 
-<button type="button"
-onclick="document.getElementById('demo').innerHTML = Date()">
-Click me to display Date and Time.</button>
+<button type="button" onclick="myFunction1()">Date</button>
 
 <button type="button" onclick="myFunction()">Try it</button>
 
