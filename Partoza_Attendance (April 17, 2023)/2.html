@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <script>
+    function myDate(){
+      document.getElementById("demo").innerHTML = Date();
+    }
+    function myFunction(){
+      document.getElementById("demo").innerHTML = "Partoza, Mark Andrei";
+    }
+    function pawak(){
+      document.getElementById("demo").innerHTML = "Partoza, Mark Andrei";
+      document.getElementById('demo').style.fontSize='15px';
+      document.getElementById('demo').style.color='#1375F1';
+      
+    }
+   </script>
+  </head>
+<body>
+   <h2>My First JavaScript</h2>
+    <button type="button" onclick="myDate()">Date</button>
+    <button type="button" onclick="myFunction()">Try it</button>
+    <button type="button" 
+            onclick="document.getElementById('demo').style.fontSize='55px'">
+      Sizing
+    </button>
+    <button type="button" 
+            onclick="document.getElementById('demo').style.fontSize='15px'">
+      Sizing
+    </button>
+     <button type="button" 
+            onclick="document.getElementById('demo').style.color='#1375F1'">
+      Blue
+    </button>
+    <button type="button" 
+            onclick="document.getElementById('demo').style.color='#1DDC2B'">
+      Green
+    </button>
+     <button type="button" 
+            onclick="document.getElementById('demo').style.color='#D74111'">
+      Red
+    </button>
+    
+    <button type="button" onclick="test()">Sample</button>
+    <p id="demo"></p>
+   <br />_______________________________________________________________________<br /><br />
+   <h2>What Can JavaScript Do?</h2>
+     <p>JavaScript can change HTML attributes values</p>
+     <p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+   <button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
+     <img id="myImage" src="pic_bulboff.gif" style="width:100px">
+   <button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+   <br />_______________________________________________________________________<br /><br />
+     <p id="Fresh"></p>
+     <script>
+     const cars = ["Saab","Volvo", "BMW"];
+     document.getElementById("Fresh").innerHTML = cars[0];
+     </script>
+   <br />_______________________________________________________________________<br /><br />
+
+
+</body>
+</html>
+
+
+<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+
+<p id="daemon">
+
+<script>
+let a, b, c;
+a = 5;
+b = 6;
+c = a + b;
+document.getElementById("daemon").innerHTML = c;
+</script>
+
+<p id="mon"></p>
+
+<script>
+const cars = ["Saab", "Volvo", "BMW", "ETO YOONG MALI"];
+document.getElementById("mon").innerHTML = cars[1];
+</script>
+
+
+
+</body>
+</html> 
