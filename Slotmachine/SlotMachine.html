@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slot Machine Game</title>
+	<style>
+        #container {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#slot-machine {
+	margin: 50px auto;
+	height: 150px;
+	width: 450px;
+	border: 5px solid black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#slot1, #slot2, #slot3 {
+	height: 100px;
+	width: 100px;
+	background-color: white;
+	border: 5px solid black;
+	border-radius: 50%;
+	font-size: 70px;
+	text-align: center;
+	line-height: 100px;
+}
+
+#controls {
+	margin-top: 50px;
+}
+
+#message {
+	margin-top: 10px;
+	font-size: 20px;
+}
+
+#coins {
+	margin-top: 10px;
+	font-size: 20px;
+}
+    </style>
+</head>
+<body>
+	<div id="container">
+		<h1>Slot Machine Game</h1>
+		<div id="slot-machine">
+			<div id="slot1"></div>
+			<div id="slot2"></div>
+			<div id="slot3"></div>
+		</div>
+		<div id="controls">
+			<label>Bet Amount:</label>
+			<input type="number" id="bet-amount" min="1" max="10" value="1">
+			<button id="spin-button" onclick="spin()">SPIN</button>
+			<p id="message"></p>
+			<p id="coins">Coins: 20</p>
+		</div>
+	</div>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
