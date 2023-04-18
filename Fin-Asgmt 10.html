@@ -36,11 +36,17 @@
                 border-radius: 5px;
                 width: 90%;
                 }
+            #container {
+                max-width: 300px;
+                margin: 0 auto;
+                text-align: center;
+            }
 
         </style>
       </head>
       <body>
-        <h1>Calculator</h1>
+        <h1 style="text-align: center;">Calculator</h1>
+        <div id="container">
         <input type="text" id="result" readonly>
         <br>
         <input type="button" value="1" onclick="addToResult('1')">
@@ -62,6 +68,7 @@
         <input type="button" value="C" onclick="clearResult()">
         <input type="button" value="/" onclick="addToResult('/')">
         <input type="button" value="=" onclick="calculateResult()">
+        </div>
         <script>
             function addToResult(value) {
                 document.getElementById("result").value += value;
