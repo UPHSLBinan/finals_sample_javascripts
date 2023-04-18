@@ -4,12 +4,39 @@
         <meta charset="UTF-8">
         <title>Assignment 10 - Hernandez</title>
         <style>
-     
-          input[type="button"] {
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
-          }
+             body {
+                background-color: #333;
+                color: #fff;
+                font-family: Arial, sans-serif;
+                }
+
+            input[type="button"] {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                color: #333;
+                background-color: #fff;
+                border: none;
+                border-radius: 5px;
+                margin: 5px;
+                }
+
+            input[type="button"]:hover {
+                background-color: #eee;
+                cursor: pointer;
+                }
+
+            input[type="text"] {
+                font-size: 24px;
+                padding: 5px;
+                margin: 5px;
+                background-color: #333;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                width: 90%;
+                }
+
         </style>
       </head>
       <body>
@@ -36,18 +63,20 @@
         <input type="button" value="/" onclick="addToResult('/')">
         <input type="button" value="=" onclick="calculateResult()">
         <script>
-          function addToResult(value) {
-            document.getElementById("result").value += value;
-          }
+            function addToResult(value) {
+                document.getElementById("result").value += value;
+            }
           
-          function clearResult() {
+            function clearResult() {
             document.getElementById("result").value = "";
-          }
+            }
           
-          function calculateResult() {
-            var result = eval(document.getElementById("result").value);
-            document.getElementById("result").value = result;
-          }
+            function calculateResult() {
+                var result = eval(document.getElementById("result").value);
+                document.getElementById("result").value = result;
+            
+            }
+          
         </script>
       </body>
 </html>
