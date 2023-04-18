@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    function updateFullName() {
+      document.getElementById('demo').innerHTML = "Aguilar, Ellona Jean N.";
+    }
+
+    function showDate() {
+      document.getElementById('demo').innerHTML = Date();
+    }
+
+    function changeStyle() {
+      document.getElementById('demo').innerHTML = "Aguilar, Ellona Jean N.";
+      document.getElementById('demo').style.fontSize = '18px';
+      document.getElementById('demo').style.color = 'black';
+    }
+  </script>
+</head>
+
+<body>
+  <h2>My First JavaScript</h2>
+
+  <button type="button" onclick="showDate()">Date</button>
+
+  <button type="button" onclick="updateFullName()">Update Name</button>
+
+  <button type="button" onclick="document.getElementById('demo').style.fontSize='55px'">Big</button>
+
+  <button type="button" onclick="document.getElementById('demo').style.fontSize='15px'">Small</button>
+
+  <button type="button" onclick="document.getElementById('demo').style.color='red'">Red</button>
+
+  <button type="button" onclick="document.getElementById('demo').style.color='black'">Black</button>
+
+  <button type="button" onclick="document.getElementById('demo').style.color='blue'">Blue</button>
+
+  <p id="demo" onmouseover="changeStyle()"></p>
+
+  <br><br>-----------------------------------------------------------------------------------</br></br>
+
+  <button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
+
+  <img id="myImage" src="pic_bulboff.gif" style="width:100px">
+
+  <button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+
+  <br><br>-----------------------------------------------------------------------------------</br></br>
+
+  <h2>JavaScript Statements</h2>
+
+  <p>JavaScript statements are separated by semicolons.</p>
+
+  <p id="result"></p>
+
+  <script>
+    let num1, num2, total;
+    num1 = 5;
+    num2 = 6;
+    total = num1 + num2;
+    document.getElementById("result").innerHTML = total;
+  </script>
+
+  <br><br>-----------------------------------------------------------------------------------</br></br>
+
+  <p id="demo2"></p>
+
+  <script>
+    const carBrands = ["Toyota", "Honda", "Nissan"];
+    document.getElementById("demo2").innerHTML = carBrands[1];
+  </script>
+
+</body>
+</html>
