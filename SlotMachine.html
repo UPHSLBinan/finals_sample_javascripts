@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slot Machine</title>
+	<style>
+		#slot-machine {
+			width: 400px;
+			height: 300px;
+			margin: 0 auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			box-shadow: 1px 1px 5px #ccc;
+			text-align: center;
+			font-size: 24px;
+			font-family: Arial, sans-serif;
+		}
+		input[type="button"] {
+			width: 100px;
+			height: 50px;
+			font-size: 20px;
+			margin: 5px;
+			border-radius: 5px;
+			border: none;
+			background-color: #eee;
+			cursor: pointer;
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="slot-machine">
+		<p>Coins: <span id="coins">20</span></p>
+		<p>Bet: <input type="text" id="bet" value="1" readonly></p>
+		<p>Icons: ñ ö ó å ä</p>
+		<p>Winning Combinations: ñññ (x2) ööö (x5) óóó (x10) ååå (x20) äää (x50)</p>
+		<p>Spin: <input type="button" value="Spin" onclick="spin()"></p>
+		<div id="slots">
+			<span id="slot1"></span>
+			<span id="slot2"></span>
+			<span id="slot3"></span>
+		</div>
+		<p id="result"></p>
+	</div>
+	<script>
+		var coins = 20;
+		var bet = 1;
+		var slots = ["ñ", "ó", "ö", "å", "ä"];
+		var winnings = {"ñññ": 2, "óóó": 10, "ööö": 5, "ååå": 20, "äää": 50};
+
+		function spin() {
+			if (coins < bet) {
+				alert("You don't have enough coins to make this bet!");
+				return;
+			}
+
+			coins -= bet;
+			document.getElementById("coins").innerHTML = coins;
+
+			var slot1 = slots[Math.floor(Math.random() * slots.length)];
+			var slot2 = slots[Math.floor(Math.random() * slots.length)];
+			var slot3 = slots[Math.floor(Math.random() * slots.length)];
+
+			document.getElementById("slot1").innerHTML = slot1;
+			document.getElementById("slot2").innerHTML = slot2;
+			document.getElementById("slot3").innerHTML = slot3;
+
+			var result = slot1 + slot2 + slot3;
+
+			if (result in winnings) {
+				var win = winnings[result] * bet;
+				coins += win;
+				document.getElementById("coins").innerHTML = coins;
+				document.getElementById("result").innerHTML = "You won " + win + " coins!";
+			} else {
+				document.getElementById("result").innerHTML = "Sorry, you didn't win anything.";
+			}
+		}
+	</script>
+</body>
+</html>
