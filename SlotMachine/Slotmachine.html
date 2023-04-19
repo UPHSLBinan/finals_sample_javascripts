@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link href="https://fonts.cdnfonts.com/css/shine-of-love" rel="stylesheet">
+    <title>Slot Machine</title>
+	<style>
+	@import url('https://fonts.cdnfonts.com/css/shine-of-love');
+	
+	html, body {
+  height: 100%;
+}
+	body{
+	background-image: url('casinobackground.png');
+			 background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+	}
+
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+p {
+  margin: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+#coins {
+  font-weight: bold;
+  font-size: 35px;
+  padding-left: 90px;
+  color: white;
+}
+
+input[type="number"] {
+  width: 50px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+button {
+  padding: 10px;
+  font-size: 45px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.0);
+  background-image: url('spin.png');
+background-size: cover;
+			width: 220px;
+			height: 95px;
+}
+
+button:hover {
+  background-image: url('spinhover.png');
+}
+
+#result {
+  font-size: 72px;
+  text-align: center;
+  color: #333;
+  margin: 30px 0;
+}
+.slotmachinewindow{
+			background-image: url('slotmachine.png');
+			background-size: cover;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			width: 680px;
+			height: 480px;
+			margin: auto;
+
+			  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+		}
+		
+
+  .slotmachinewindow img {
+    position: absolute;
+    top: -130px;
+    left: 20;
+    z-index: 1;
+  }
+  
+  #spinbutton{
+      position: absolute;
+    top: 495px;
+    left: 350px;
+    z-index: 1;
+  }
+  #betbarr{
+        position: absolute;
+    top: 495px;
+    left: 120px;
+    z-index: 1;
+  }
+  #coinss{
+      position: absolute;
+    top: -100px;
+    left: -100px;
+    z-index: 1;
+  }
+  
+.coinsbar{
+background-image: url('coins.png');
+background-size: cover;
+padding-top: 13px;
+			width: 220px;
+			height: 80px;
+			
+}
+.betbar{
+background-image: url('bet.png');
+background-size: cover;
+padding-top: 16px;
+			width: 220px;
+			height: 80px;
+			font-family: 'Shine of Love', sans-serif;
+			
+}
+#bett{
+  font-weight: bold;
+  font-size: 35px;
+  padding-left: 40px;
+  color: white;
+}
+	</style>
+  </head>
+  <body>
+  
+ 
+	
+	<div class="slotmachinewindow">
+	
+	<div id="coinss" class="coinsbar">
+    <p style="font-family: 'Shine of Love', sans-serif; font-color: white;"> <span id="coins">20</span></p></div>
+	
+	
+	<img src="slotbanner.png" height="250px">
+    <p><br><br><span id="result" ></span></p>
+	<div id="betbarr" class="betbar">	
+    <p  id="bett"style="color: #144b8eff; ">Bet: <input type="number" style="font-family: 'Shine of Love', sans-serif; background-color: #01355dff; color: white; border-radius: 10px; " id="bet" min="1" max="10" value="1"></p></div>
+	<button id="spinbutton" style="font-family: 'Shine of Love', sans-serif; font-color: white;" onclick="spin()" >SPIN</button>
+	 </div> 
+<script style="content-align: center;">
+	const icons = ["🍒", "🍋", "🍇", "🍊", "🍉"];
+	const payouts = [0, 2, 5, 10, 20];
+
+	let coins = 20;
+
+	function spin() {
+	  const bet = Number(document.getElementById("bet").value);
+	  if (bet > coins) {
+	    alert("Not enough coins!");
+	    return;
+	  }
+	  coins -= bet;
+	  document.getElementById("coins").innerText = coins;
+	  const results = [icons[Math.floor(Math.random() * 5)], icons[Math.floor(Math.random() * 5)], icons[Math.floor(Math.random() * 5)]];
+	  document.getElementById("result").innerHTML = results.map(icon => `<span style="padding: 0 8px">${icon}</span>`).join("&nbsp;");
+	  let payout = 0;
+	  if (results[0] === results[1] && results[1] === results[2]) {
+	    payout = payouts[icons.indexOf(results[0])];
+	    coins += bet * payout;
+	    document.getElementById("coins").innerText = coins;
+	    alert(`You won ${bet * payout} coins!`);
+	  }
+	  else {
+	    alert("Try again!");
+	  }
+	}
+</script>
+	
+  </body>
+</html>
