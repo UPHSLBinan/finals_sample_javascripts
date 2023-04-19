@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Slot Machine Cualquiera</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<h1>Slot Machine</h1>
+			<p>Token: <span id="coins">20</span></p>
+			<p>Bet Amount: <input type="number" id="bet" min="1" max="10" value="1"></p>
+		</div>
+		<div class="slots">
+			<div class="slot" id="slot1"></div>
+			<div class="slot" id="slot2"></div>
+			<div class="slot" id="slot3"></div>
+		</div>
+		<div class="controls">
+			<button id="spin">SPIN</button>
+			<button id="reset">RESET</button>
+		</div>
+		<div class="pogi">
+			<p>MATCH 3 SYMBOLS TO WIN GOODLUCK!</p>
+			<p id="result"></p>
+		</div>
+	</div>
+	<script src="pogi.js"></script>
+</body>
+</html>
