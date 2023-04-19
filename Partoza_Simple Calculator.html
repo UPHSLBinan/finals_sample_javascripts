@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Calculator</title>
+    <style>
+      body {
+        background-image: url('https://i.makeagif.com/media/9-07-2020/oFwIGP.gif');
+        background-size: cover;
+        font-family: Bodoni MT, New Century Schoolbook;
+      }
+      h1 {
+        color: #13E730;
+        text-align: center;
+        font-size: 50px;
+
+      }
+      p {
+        color: #13E730;
+        font-size: 50px;
+      }
+      input[type='number'] {
+        padding: 35px;
+        margin: 35px;
+        border-radius: 25px;
+        border: none;
+      }
+      select {
+        padding: 35px;
+        margin: 35px;
+        border-radius: 25px;
+        border: none;
+      }
+      button {
+        padding: 35px;
+        margin: 30px;
+        border-radius:15px;
+        border: none;
+        background-color: #13E730;
+        color: Black;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #21CD39;
+      }
+      #result {
+        font-weight: bold;
+        font-size: 40px;
+        color: #13E730;
+      }
+    </style>
+    <script>
+      function calculate() {
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+        var operator = document.getElementById("operator").value;
+        var result;
+
+        if (operator === "+") {
+          result = num1 + num2;
+        } else if (operator === "-") {
+          result = num1 - num2;
+        } else if (operator === "*") {
+          result = num1 * num2;
+        } else if (operator === "/") {
+          result = num1 / num2;
+        }
+
+        document.getElementById("result").innerHTML = result;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>SIMPLE CALCULATOR</h1>
+    <p>Enter two numbers and select an operation:</p>
+    <input type="number" id="num1" placeholder="Enter a number" />
+    <select id="operator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <input type="number" id="num2" placeholder="Enter a number" />
+    <button onclick="calculate()">Calculate</button>
+    <p>Result: <span id="result"></span></p>
+  </body>
+</html>

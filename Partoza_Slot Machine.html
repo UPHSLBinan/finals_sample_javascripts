@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slot Machine</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Bodoni MT, New Century Schoolbook;
+        background-image: url('https://media.istockphoto.com/id/1351574073/vector/gold-poker-chips-flying-or-pouring-to-the-bottom.jpg?s=612x612&w=0&k=20&c=ymLx0rP_CHZo-D30p1ybA3KY_9kptn1JpEp3IV06_go=');
+        background-size: cover;
+}
+      }
+
+ h1 {
+        color: #1F36C5;
+        text-align: center;
+        font-size: 30px;
+
+      }
+      p {
+        color: #1F36C5;
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+      .slot {
+        display: inline-block;
+        width: 110px;
+        height: 110px;
+        margin: 10px;
+        border: 10px solid black;
+        font-size: 100px;
+        font-weight: bold;
+        vertical-align: middle;
+        color: #2A9122;
+        border-color: #269921;
+        background-color: #C4E92A;
+      }
+      .bet {
+        margin-top: 30px;
+        font-size: 30px;
+        font-weight: bold;
+        
+        
+        
+         
+      }
+      button {
+        margin-top: 25px;
+        padding: 25px;
+        border-radius: 15px;
+        border: none;
+        background-color: #13A1E3;
+        color: black;
+        cursor: pointer;
+        font-size: 15px
+     
+      }
+      button:hover {
+        background-color: #00E4EF;
+      }
+      #result {
+        font-weight: bold;
+        font-size: 30px;
+        color: #1D5FBD;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SLOT MACHINE</h1>
+    <p>Starting coins: <span id="coins">20</span></p>
+    <div>
+      <div class="slot" id="slot1"></div>
+      <div class="slot" id="slot2"></div>
+      <div class="slot" id="slot3"></div>
+    </div>
+    <div class="bet">
+      <label for="bet">Bet (1-10):</label>
+      <input type="number" id="bet" min="1" max="10" value="1" />
+    </div>
+    <button onclick="spin()">Spin</button>
+    <p id="result"></p>
+    <script>
+      var coins = 20;
+      var icons = ['ñ', 'ö', 'ç', 'é', 'à'];
+      var winnings = [2, 5, 10, 50, 100];
+      var slot1 = document.getElementById('slot1');
+      var slot2 = document.getElementById('slot2');
+      var slot3 = document.getElementById('slot3');
+
+      function spin() {
+        var bet = parseInt(document.getElementById('bet').value);
+        if (bet > coins) {
+          alert('You do not have enough coins to place that bet!');
+          return;
+        }
+
+        coins -= bet;
+        document.getElementById('coins').innerHTML = coins;
+
+        var icon1 = icons[Math.floor(Math.random() * icons.length)];
+        var icon2 = icons[Math.floor(Math.random() * icons.length)];
+        var icon3 = icons[Math.floor(Math.random() * icons.length)];
+
+        slot1.innerHTML = icon1;
+        slot2.innerHTML = icon2;
+        slot3.innerHTML = icon3;
+
+        if (icon1 === icon2 && icon2 === icon3) {
+          var winningsIndex = icons.indexOf(icon1);
+          var winningsMultiplier = winnings[winningsIndex];
+          var winningsAmount = bet * winningsMultiplier;
+          coins += winningsAmount;
+          document.getElementById('coins').innerHTML = coins;
+          document.getElementById('result').innerHTML = 'You won ' + winningsAmount + ' coins!';
+        } else {
+          document.getElementById('result').innerHTML = 'You lost ' + bet + ' coins!';
+        }
+      }
+    </script>
+  </body>
+</html>
