@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Slot Machine</title>
+  <style>
+    .icon {
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      display: inline-block;
+      margin-right: 10px;
+    }
+    
+    #container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+    }
+    
+    #slot-machine {
+      margin-top: 50px;
+		text-align: center;
+		color: antiquewhite;
+    }
+	  body {
+        background: url("slotmachine.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="slot-machine">
+      <h1>Slot Machine Example With Javascript</h1>
+      <p>Coins: <span id="coins">20</span></p>
+      <p>Current Bet: <span id="bet">1</span></p>
+      <button onclick="increaseBet()">Increase Bet</button>
+      <button onclick="spin()">Spin</button>
+      <div id="slots">
+        <span class="icon" id="slot1"></span>
+        <span class="icon" id="slot2"></span>
+        <span class="icon" id="slot3"></span>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Define the symbols and their point values as PNG icons
+    const symbols = [
+      { icon: 'lemon.jpg', points: 1 },
+      { icon: 'apple.jpg', points: 2 },
+      { icon: 'bar.jpg', points: 3 },
+      { icon: 'cherry.jpg', points: 4 },
+      { icon: 'donut.jpg', points: 5 },
+    ];
+
+    // Set up variables for the game state
+    let coins = 20;
+    let bet = 1;
+    let slots = ['', '', ''];
+
+    // Update the UI with the current game state
+    function updateUI() {
+      document.getElementById('coins').textContent = coins;
+      document.getElementById('bet').textContent = bet;
+      document.getElementById('slot1').style.backgroundImage = `url(${slots[0]})`;
+      document.getElementById('slot2').style.backgroundImage = `url(${slots[1]})`;
+      document.getElementById('slot3').style.backgroundImage = `url(${slots[2]})`;
+    }
+
+    // Increase the bet by 1 point (up to 10 points max)
+    function increaseBet() {
+      if (bet < 10) {
+        bet++;
+        updateUI();
+      }
+    }
+
+    // Spin the slots and check for a win
+    function spin() {
+      if (coins < bet) {
+        alert('You do not have enough coins to make this bet!');
+        return;
+      }
+
+      coins -= bet;
+      slots = ['', '', ''];
+
+      for (let i = 0; i < 3; i++) {
+        const randomIndex = Math.floor(Math.random() * symbols.length);
+        slots[i] = symbols[randomIndex].icon;
+      }
+
+      updateUI();
+
+      const win = checkForWin();
+      if (win) {
+        coins += bet * win.points;
+        alert(`You won ${bet * win.points} coins!`);
+      }
+    }
+
+    // Check if all the slots have the same symbol, and return the corresponding win type
+    function checkForWin() {
+      for (let i = 0; i < symbols.length; i++) {
+        const symbol = symbols[i].icon;
+        if (slots[0] === symbol && slots[1] === symbol && slots[2] === symbol) {
+          return { type: 'Match 3', points: symbols[i].points };
+        }
+      }
+
+      return null;
+    }
+
+    updateUI();
+  </script>
+</body>
+</html>
