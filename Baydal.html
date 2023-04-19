@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <center>
+	<title>MY FIRST JAVASCRIPT</title>
+	<script>
+		function updateFullName() {
+			document.getElementById('demo').innerHTML = "Baydal, Steven Kurt H.";
+		}
+	function showDate() {
+		document.getElementById('demo').innerHTML = new Date().toString();
+	}
+
+	function changeStyle() {
+		document.getElementById('demo').innerHTML = "Baydal, Steven Kurt H.";
+		document.getElementById('demo').style.fontSize = '25px';
+		document.getElementById('demo').style.color = 'black';
+	}
+
+	function changeFontSize(size) {
+		document.getElementById('demo').style.fontSize = size;
+	}
+
+	function changeFontColor(color) {
+		document.getElementById('demo').style.color = color;
+	}
+
+	function turnOnLight() {
+		document.getElementById('myImage').src = 'BaydalBON.gif';
+	}
+
+	function turnOffLight() {
+		document.getElementById('myImage').src = 'BaydalBOFF.gif';
+	}
+</script>
+</head>
+<body>
+	<h2>MY FIRST JAVASCRIPT</h2>
+<button type="button" onclick="showDate()">Date</button>
+
+<button type="button" onclick="updateFullName()">Update Name</button>
+
+<button type="button" onclick="changeFontSize('55px')">Big</button>
+
+<button type="button" onclick="changeFontSize('15px')">Small</button>
+
+<button type="button" onclick="changeFontColor('red')">Red</button>
+
+<button type="button" onclick="changeFontColor('black')">Black</button>
+
+<button type="button" onclick="changeFontColor('blue')">Blue</button>
+
+<p id="demo" onmouseover="changeStyle()">Click any option above to change the style!</p>
+
+<hr>
+
+<button onclick="turnOnLight()">CLICK FOR TURNING ON THE LIGHT</button>
+
+<img id="myImage" src="BaydalBOFF.gif" style="width:130px">
+
+<button onclick="turnOffLight()">CLICK FOR TURNING OFF THE LIGHT</button>
+
+<hr>
+
+<h2>JavaScript Statements</h2>
+
+<p>JavaScript statements are separated by semicolons.</p>
+
+<p id="result"></p>
+
+<script>
+	let num1 = 5;
+	let num2 = 6;
+	let total = num1 + num2;
+	document.getElementById("result").innerHTML = total;
+</script>
+
+<hr>
+
+<p id="demo2"></p>
+
+<script>
+	const carBrands = ["Ferrari", "Ford", "BMW"];
+	document.getElementById("demo2").innerHTML = carBrands[1];
+</script>
+</body>
+</html>
+</center>
