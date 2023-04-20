@@ -3,14 +3,23 @@
   <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
-
-    <link rel="stylesheet" href="style.css">
-
+<body style="background-color:#33CCFF;">
+    <style>
+      input[type="button"] {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+      }
+    </style>
   </head>
+
   <body>
-    <h1>Calculator</h1>
+<center>
+<div style="padding-top:15%"> </div>
+<h2 style="font-size:15px;">Kim Adrian A. Belandres</h2>
+    <h1 style="font-family:verdana;">CALCULATOR</h1>
     <input type="text" id="result" readonly>
-    <br>
+    <br> <br>
     <input type="button" value="1" onclick="addToResult('1')">
     <input type="button" value="2" onclick="addToResult('2')">
     <input type="button" value="3" onclick="addToResult('3')">
@@ -24,7 +33,7 @@
     <input type="button" value="7" onclick="addToResult('7')">
     <input type="button" value="8" onclick="addToResult('8')">
     <input type="button" value="9" onclick="addToResult('9')">
-    <input type="button" value="*" onclick="addToResult('*')">
+    <input type="button" value="" onclick="addToResult('')">
     <br>
     <input type="button" value="0" onclick="addToResult('0')">
     <input type="button" value="C" onclick="clearResult()">
@@ -44,5 +53,7 @@
         document.getElementById("result").value = result;
       }
     </script>
+</center>
+
   </body>
 </html>
