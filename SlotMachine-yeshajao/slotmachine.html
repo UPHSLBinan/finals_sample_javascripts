@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slot Machine Yesha Jao</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Yesha's Simple Slot Machine</h1>
+        <p>Coins: <span id="coins">20</span></p>
+        <div id="slots-container">
+            <div class="slot" id="slot1"></div>
+            <div class="slot" id="slot2"></div>
+            <div class="slot" id="slot3"></div>
+        </div>
+        <div id="buttons-container">
+            <button onclick="spin()">Spin</button>
+            <button onclick="bet()">Bet</button>
+            <button onclick="reload()">Reload</button>
+        </div>
+        <p id="message"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
