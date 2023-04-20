@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS Document */
+
+.container {
+  margin: 50px auto;
+  padding: 20px;
+  border: 5px solid #EF4A4C;
+  border-radius: 10px;
+  background-image: url("bg.jpg");
+  background-size: cover;
+  width: 450px;
+  text-align: center;
+}
+
+input[type="number"] {
+  width: 60px;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #e3e3e3;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+button {
+  background-color: #4CAF50;
+  border: #EF4A4C;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#slot1, #slot2, #slot3 {
+  font-size: 50px;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  border: 3px solid #EF4A4C;
+  border-radius: 10px;
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+}
+
+#result {
+  color: #FF0004;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+#coins {
+  color: #FF0004;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.spinbutton{
+	background-color: #2D090A;
+	color: #FF0004;
+	font-size: 30px;
+    font-weight: bold;
+}
+
+.fontcolor{
+	color: #FF0004;
+	font-size: 30px;
+  font-weight: bold;	
+}
