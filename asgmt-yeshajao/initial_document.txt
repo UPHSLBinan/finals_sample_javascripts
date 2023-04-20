@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jao Calculator</title>
+    <style>
+        body {
+            background-image: url('jao.gif');
+            
+            text-align: center;
+            font-family: monospace, sans-serif;
+        }
+        h1 {
+            color: #FF1493;
+        }
+        .container {
+            display: inline-block;
+            margin-top: 100px;
+            background-color: #0F5701;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+        }
+        input {
+            margin-bottom: 10px;
+            width: 75%;
+            padding: 26px;
+            border: 2px solid black;
+            border-radius: 5px;
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        button {
+            width: 20%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .result {
+            
+            margin-top: 10px;
+            border: 2px solid black;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculator</h1>
+        <input type="text" id="inputField" disabled />
+        <div>
+            <button onclick="clearInput()">C</button>
+            <button onclick="appendValue('/')">/</button>
+            <button onclick="appendValue('*')">*</button>
+            <button onclick="appendValue('-')">-</button>
+        </div>
+        <div>
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('+')">+</button>
+        </div>
+        <div>
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendValue('.')">.</button>
+        </div>
+        <div>
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="calculateResult()">=</button>
+        </div>
+        <div>
+            <button onclick="appendValue('0')">0</button>
+        </div>
+        <div class="result" id="resultField"></div>
+    </div>
+
+    <script>
+        let inputField = document.getElementById('inputField');
+        let resultField = document.getElementById('resultField');
+
+        function clearInput() {
+            inputField.value = '';
+            resultField.innerText = '';
+        }
+
+        function appendValue(value) {
+            inputField.value += value;
+        }
+
+        function calculateResult() {
+            let input = inputField.value;
+            try {
+                let result = eval(input);
+                if (isNaN(result)) {
+                    throw 'Invalid input';
+                }
+                resultField.innerText = `${result}`;
+            } catch (error) {
+                resultField.innerText = error;
+            }
+        }
+    </script>
+</body>
+</html>
