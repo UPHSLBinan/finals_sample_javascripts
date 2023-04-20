@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="slot.js"></script>
+  <link rel="stylesheet" href="hernandezslot.css">
+  <title>Hernandez Slot Machine Game</title>
+</head>
+<body style="background-image: url('bg.jpg'); background-size: cover">
+<div class="container">
+	<marquee><h1 class="fontcolor">ABCDE Hernandez Slot Machine</h1></marquee>
+<div class="slots">
+	<span id="slot1"></span>
+	<span id="slot2"></span>
+	<span id="slot3"></span>
+</div>
+
+<div class="controls">
+	<div class="coins">
+	<p class="fontcolor">Coins: <span id="coins">20</span></p>
+	</div>
+	<p class="fontcolor">Bet: <input type="number" id="bet" min="1" max="10" value="1"></p>
+	<div>
+	<button class="spinbutton" onclick="spin()">Spin</button>
+	</div>
+	<div class="result">
+	<p id="result"></p>
+	</div>
+</div>
+</div>
+</body>
+</html>
