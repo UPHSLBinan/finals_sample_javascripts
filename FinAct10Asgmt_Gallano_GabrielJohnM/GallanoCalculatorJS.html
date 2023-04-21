@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>Gallano JS Calculator</title>
+<style>
+body {
+    background-color: black;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+}
+.calculator {
+    position: absolute;
+    left: 550px;
+    top: 50px;
+    width: 335px;
+    height: 500px;
+    margin: auto;
+    border: 3px solid red;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #222222;
+}
+.button {
+    height: 25px;
+    width: 70px;
+    background-color: black;
+    color: white;
+    border: 1px solid #FF4141;
+    border-radius: 9px;
+    padding: 26px;
+    margin: 5px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+.button:hover {
+    background-color: #323232;
+}
+.bottom {
+	height: 25px;
+    width: 323px;
+    background-color: black;
+    color: red;
+    border: 1px solid #FF4141;
+    border-radius: 9px;
+    padding: 26px;
+    margin: 5px;
+    font-size: 20px;
+    font-weight: 700;	
+    text-align: center;
+}
+.bottom:hover{
+	background-color: #323232;		
+}
+.operator {
+    height: 25px;
+    width: 70px;
+    background-color: black;
+    color: red;
+    border: 1px solid #FF4141;
+    border-radius: 9px;
+    padding: 26px;
+    margin: 5px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+.operator:hover {
+    background-color: #323232;
+}	
+#result {
+	height: 95px;
+    width: 333px;
+    border: 1px solid #FF4141;
+    border-radius: 10px;
+    padding: 20px;
+	font-size: 40px;
+    background-color: black;
+	color: white;
+	text-align: right;
+	font-weight: 700;
+}
+</style>
+</head>
+<body>
+<div class="Calculator">
+  <input type="text" id="result" readonly>
+  <br>
+  <br>
+  <button class="button" onclick="insert('7')">7</button>
+  <button class="button" onclick="insert('8')">8</button>
+  <button class="button" onclick="insert('9')">9</button>
+  <button class="operator" onclick="insert('+')">+</button>
+  <br>
+  <button class="button" onclick="insert('4')">4</button>
+  <button class="button" onclick="insert('5')">5</button>
+  <button class="button" onclick="insert('6')">6</button>
+  <button class="operator" onclick="insert('*')">*</button>
+  <br>
+  <button class="button" onclick="insert('1')">1</button>
+  <button class="button" onclick="insert('2')">2</button>
+  <button class="button" onclick="insert('3')">3</button>
+  <button class="operator" onclick="insert('-')">-</button>
+  <br>
+  <button class="operator" onclick="backspace()">DEL</button>
+  <button class="button" onclick="insert('0')">0</button>
+  <button class="operator" onclick="insert('.')">.</button>
+  <button class="operator" onclick="insert('/')" >/</button>
+  <br>
+  <button class="bottom" onclick="clearResult()">AC</button>
+  <br>
+  <button class="bottom" onclick="calculate()">=</button>
+</div>
+<script>
+      function insert(num) {
+        document.getElementById('result').value += num;
+      }
+
+      function clearResult() {
+        document.getElementById('result').value = '';
+      }
+
+      function backspace() {
+        var result = document.getElementById('result').value;
+        document.getElementById('result').value = result.substring(0, result.length - 1);
+      }
+
+      function calculate() {
+        var result = document.getElementById('result').value;
+        var finalResult = eval(result);
+        document.getElementById('result').value = finalResult;
+      }
+    </script>
+</body>
+</html>

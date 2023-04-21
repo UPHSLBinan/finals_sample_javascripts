@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>Slot Machine</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+	background-color: black;
+}	
+.border {
+    position: absolute;
+    left: 550px;
+    top: 50px;
+    width: 500px;
+    height: 400px;
+    margin: auto;
+    border: 3px solid red;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #222222;
+}
+.slot {
+    display: inline-block;
+    width: 150px;
+    height: 100px;
+    margin-right: 10px;
+    border: 2px solid #FF4141;
+    text-align: center;
+    font-size: 70px;
+    line-height: 100px;
+    vertical-align: middle;
+    font-weight: bold;
+    background-color: black;
+    border-radius: 40px;
+}
+.display {
+    display: inline-block;
+	margin: 10px;
+	text-align: center;
+	width: 218px;
+}	
+h1, h2, h3 {
+	color: red;
+    text-align: center;
+}
+#spinButton {
+    height: 25px;
+    width: 490px;
+    background-color: black;
+    color: red;
+    border: 1px solid #FF4141;
+    border-radius: 9px;
+    padding: 26px;
+    margin: 5px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+#message {
+    margin-top: 20px;
+    font-weight: bold;
+}
+#bet {
+    width: 50px;
+    background-color: black;
+    color: red;
+    border: 1px solid #FF4141;
+    border-radius: 9px;
+    padding: 10px;
+	font-weight: bold;
+}
+#coins{
+	width: 500px;
+    background-color: black;
+    color: red;
+    border: 1px solid #FF4141;
+    border-radius: 9px;
+    padding: 10px;
+	font-weight: bold;	
+}	
+</style>
+</head>
+<body>
+<div class="border">
+  <h1>Slot Machine</h1>
+  <div id="slots">
+    <div class="slot" id="slot1"></div>
+    <div class="slot" id="slot2"></div>
+    <div class="slot" id="slot3"></div>
+  </div>	
+  <div class="display"><h3>Coins: <span id="coins">20</span></h3></div>
+  <div class="display"><h3>Bet:
+    <input type="number" id="bet" min="1" max="10" value="1">
+	  </h3></div>
+  <button id="spinButton">Spin</button>
+  <h2 id="message"></h2>
+  <script>
+const Suits = ["❤️", "♣️", "💎", "👑", "♠️"];
+const winnings = [0, 5, 10, 20, 50, 100];
+
+let coins = 20;
+const coinsDisplay = document.getElementById("coins");
+coinsDisplay.innerHTML = coins;
+
+const slot1 = document.getElementById("slot1");
+const slot2 = document.getElementById("slot2");
+const slot3 = document.getElementById("slot3");
+
+const betInput = document.getElementById("bet");
+
+const spinButton = document.getElementById("spinButton");
+spinButton.addEventListener("click", spin);
+
+function spin() {
+  const bet = parseInt(betInput.value);
+  if (bet > coins) {
+    document.getElementById('message').textContent="Not enough coins";
+    return;
+  }
+  coins -= bet;
+  coinsDisplay.innerHTML = coins;
+  const symbol1 = getRandomSymbol();
+  const symbol2 = getRandomSymbol();
+  const symbol3 = getRandomSymbol();
+  slot1.innerHTML = symbol1;
+  slot2.innerHTML = symbol2;
+  slot3.innerHTML = symbol3;
+  const winAmount = getWinAmount(symbol1, symbol2, symbol3);
+  if (winAmount > 0) {
+    const winningsCoins = bet * winAmount;
+    coins += winningsCoins;
+    coinsDisplay.innerHTML = coins;
+	document.getElementById('message').textContent="CONGRATULATIONS! You won!"; 
+  } else {
+	document.getElementById('message').textContent="Try Again";  
+  }
+}
+
+function getRandomSymbol() {
+  const index = Math.floor(Math.random() * Suits.length);
+  return Suits[index];
+}
+
+function getWinAmount(symbol1, symbol2, symbol3) {
+  if (symbol1 === symbol2 && symbol2 === symbol3) {
+    switch (symbol1) {
+      case Suits[0]:
+        return 5;
+      case Suits[1]:
+        return 10;
+      case Suits[2]:
+        return 20;
+      case Suits[3]:
+        return 50;
+      case Suits[4]:
+        return 100;
+    }
+  }
+  return 0;
+}
+	</script> 
+</div>
+</body>
+</html>
