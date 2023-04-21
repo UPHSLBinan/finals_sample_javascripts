@@ -1,0 +1,110 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Slot Machine</title>
+	<center>
+	<h1></h1>
+	</center>
+  <style>
+    .container {
+      background-image: url("slot.png");
+      background-size: contain;
+      background-position: center;
+      height: 85vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+.slot-machine {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200px;
+}
+
+.container img {
+position: absolute;
+top: -1px;
+left: 350px;
+z-index: 1;
+}
+
+.icon {
+  font-size: 3em;
+  padding: 40px;
+}
+
+.spin-button {
+  margin-top: 20px;
+  padding: 30px 30px;
+  height: 100px;
+  width: 250px;
+  background-image: url("Spinbutton.png");
+  background-size: cover;
+  background-position: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+    .icon {
+      width: 120px;
+      height: 130px;
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 80px;
+      color: red;
+}
+
+</style>
+</head>
+<body>
+  <div class="container"> <img src="onimaru.png">
+  <div class="slot-machine">
+    <div class="icon" id="icon1"></div>
+    <div class="icon" id="icon2"></div>
+    <div class="icon" id="icon3"></div>
+    
+  </div>
+</div>
+<div class="button-img">
+  <center>
+    <button style="border-radius: 15px;" class="spin-button" onclick="spin()"></button>
+  </center>
+</div>
+  <script>
+    let coins = 20;
+    const symbols = ["⚔️", "🗡️", "🛡️", "🗝️", "💣"];
+    const icon1 = document.getElementById("icon1");
+    const icon2 = document.getElementById("icon2");
+    const icon3 = document.getElementById("icon3");
+
+    function spin() {
+      const bet = prompt(`You have ${coins} coins. How much would you like to bet?`);
+      if (!bet || isNaN(bet) || bet <= 0 || bet > coins) {
+        alert("Invalid bet!");
+        return;
+      }
+
+      coins -= bet;
+      const results = [
+        symbols[Math.floor(Math.random() * symbols.length)],
+        symbols[Math.floor(Math.random() * symbols.length)],
+        symbols[Math.floor(Math.random() * symbols.length)]
+      ];
+
+      icon1.innerHTML = results[0];
+      icon2.innerHTML = results[1];
+      icon3.innerHTML = results[2];
+
+      if (results[0] === results[1] && results[1] === results[2]) {
+        coins += bet * 2;
+        alert(`Congratulations! You won ${bet * 5} coins!`);
+      } else {
+        alert("Sorry, try again.");
+      }
+    }
+  </script>
+</body>
+</html>
