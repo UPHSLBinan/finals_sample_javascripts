@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <center><title>Slot Machine</title> </center>
+    <style>
+        .panel {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+            margin-right: 10px;
+            text-align: center;
+            font-size: 72px;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Slot Machine</h1>
+    <div class="panel" id="panel1"></div>
+    <div class="panel" id="panel2"></div>
+    <div class="panel" id="panel3"></div>
+    <br>
+    <button onclick="pull()">Pull</button>
+    <button onclick="reset()">Reset Game</button>
+    <br>
+    <label>Bet:</label>
+    <input type="number" id="bet" min="1" max="10" value="1">
+    <button onclick="placeBet()">Place Bet And Go</button>
+    <br>
+    <label>Credit:</label>
+    <span id="credit">20</span>
+    
+    <script>
+        var credit = 20;
+        
+        function pull() {
+            var panel1 = Math.floor(Math.random() * 10) + 1;
+            var panel2 = Math.floor(Math.random() * 10) + 1;
+            var panel3 = Math.floor(Math.random() * 10) + 1;
+            document.getElementById("panel1").innerHTML = panel1;
+            document.getElementById("panel2").innerHTML = panel2;
+            document.getElementById("panel3").innerHTML = panel3;
+            
+            if (panel1 == panel2 && panel2 == panel3) {
+                credit += 1;
+                alert("You win!");
+            } else {
+                credit -= 1;
+                alert("You lose!");
+            }
+            document.getElementById("credit").innerHTML = credit;
+        }
+        
+        function reset() {
+            credit = 20;
+            document.getElementById("credit").innerHTML = credit;
+        }
+        
+        function placeBet() {
+            var bet = document.getElementById("bet").value;
+            if (bet > credit) {
+                alert("You don't have enough credit!");
+            } else {
+                credit -= bet;
+                document.getElementById("credit").innerHTML = credit;
+                pull();
+            }
+        }
+    </script>
+</body>
+</html>
