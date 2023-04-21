@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slot Machine</title>
+    <link rel="stylesheet" type="text/css" href="design.css">
+</head>
+<body>
+	<h1>Simple Slot Machine</h1>
+	<p>Your Coins:</p>
+    <span id="coins">20</span>
+	<p>Place your bet:</p> 
+    <input type="number" id="bet" min="1" max="10" value="1">
+	
+	<p id="result"></p>
+    <p>
+        <button onclick="spin()">Spin</button>
+       <button onclick="resetCoins()">Reset Coins only if it reaches 0!</button>    
+    </p>       
+
+	<script>
+		
+		var coins = 20;
+		var initialCoins = coins;
+		var bet = 1;
+		var slots = ['♠', '♣', '♥', '♦','☺']; 
+		var winnings = {
+			"♠ ♠ ♠": 5,
+			"♣ ♣ ♣": 10,
+			"♥ ♥ ♥": 30,
+			"♦ ♦ ♦": 50,
+			"☺ ☺ ☺": 100
+		};
+
+		
+		function spin() {
+			
+			coins -= bet;
+			document.getElementById("coins").textContent = coins;
+			bet = parseInt(document.getElementById("bet").value);
+
+			var slot1 = slots[Math.floor(Math.random() * slots.length)];
+			var slot2 = slots[Math.floor(Math.random() * slots.length)];
+			var slot3 = slots[Math.floor(Math.random() * slots.length)];
+
+			
+			var result = slot1 + " " + slot2 + " " + slot3;
+			document.getElementById("result").textContent = result;
+
+			if (winnings[result]) {
+				var winAmount = bet * winnings[result];
+				coins += winAmount;
+				document.getElementById("coins").textContent = coins;
+				document.getElementById("result").textContent += " - Here's " + winAmount + " coins to play more!";
+			}
+
+           
+
+			if (coins <= 0) {
+				document.getElementById("result").textContent += " - Time to Reset Coins";
+				document.getElementById("bet").disabled = true;
+				document.getElementsByTagName("button")[0].disabled = true;
+               
+			}
+		}
+        
+    
+        function resetCoins() {
+            coins = initialCoins;
+            document.getElementById("coins").textContent = coins;
+            document.getElementById("bet").disabled = false;
+            document.getElementsByTagName("button")[0].disabled = false;
+        }
+	</script>
+</body>
+</html>
