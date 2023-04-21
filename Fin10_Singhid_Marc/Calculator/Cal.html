@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+
+<title> Te Calculator </title>
+
+</head>
+
+<body>
+<h1> Calculator </h1>
+
+<div>
+
+<form name = "Bottonforms">
+<input id = "cal" type ="text" name = "answer"> <br> <br>
+<input type = "button" value ="1" onclick = "Bottonforms.answer.value += '1'">
+<input type = "button" value ="2" onclick = "Bottonforms.answer.value += '2'">
+<input type = "button" value ="3" onclick = "Bottonforms.answer.value += '3'">
+<input type = "button" value ="+" onclick = "Bottonforms.answer.value += '+'">
+<br> <br>
+
+<input type = "button" value ="4" onclick = "Bottonforms.answer.value += '4'">
+<input type = "button" value ="5" onclick = "Bottonforms.answer.value += '5'">
+<input type = "button" value ="6" onclick = "Bottonforms.answer.value += '6'">
+<input type = "button" value ="-" onclick = "Bottonforms.answer.value += '-'">
+<br> <br>
+
+<input type = "button" value ="7" onclick = "Bottonforms.answer.value += '7'">
+<input type = "button" value ="8" onclick = "Bottonforms.answer.value += '8'">
+<input type = "button" value ="9" onclick = "Bottonforms.answer.value += '9'">
+<input type = "button" value ="*" onclick = "Bottonforms.answer.value += '*'">
+<br> <br>
+
+<input type = "button" value ="/" onclick = "Bottonforms.answer.value += '/'">
+<input type = "button" value ="0" onclick = "Bottonforms.answer.value += '0'">
+<input type = "button" value ="." onclick = "Bottonforms.answer.value += '.'">
+
+<input type = "button" value = "=" onclick = "Bottonforms.answer.value = eval(Bottonforms.answer.value)">
+<br>
+
+ <input type = "button" value = "C" onclick = "Bottonforms.answer.value = ' ' " id= "clear" >
+<br>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

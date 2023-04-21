@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slot Machine</title>
+</head>
+<body>
+	<h1>Slot Machine</h1>
+	<form id="slotmachine">
+		<label for="betinput">Bet (1-10):</label>
+		<input type="number" id="betinput" min="1" max="10" value="1">
+		<button type="button" id="spinbtn">Spin</button>
+	</form>
+	<p>Coins: <span id="coins">20</span></p>
+	<div id="slots">
+		<div class="slot"></div>
+		<div class="slot"></div>
+		<div class="slot"></div>
+	</div>
+	<p id="result"></p>
+	<p>Legend:</p>
+	<ul>
+		<li><span class="winsymbol">🏆🏆🏆</span> - x2 payout</li>
+		<li><span class="winsymbol">🥇🥇🥇</span> - x5 payout</li>
+		<li><span class="winsymbol">🏅🏅🏅</span> - x10 payout</li>
+		<li><span class="winsymbol">🏀🏀🏀</span> - x20 payout</li>
+		<li><span class="winsymbol">🎾🎾🎾</span> - x50 payout</li>
+	</ul>
+
+	<script src="slotmachine.js"></script>
+</body>
+</html>
