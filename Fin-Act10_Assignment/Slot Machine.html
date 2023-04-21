@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>Slot Machine</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		.slot {
+			display: inline-block;
+			width: 150px;
+			height: 150px;
+			margin-right: 20px;
+			border: 2px solid black;
+			text-align: center;
+			font-size: 70px;
+			line-height: 100px;
+			vertical-align: middle;
+			font-weight: bold;
+			color: #D9ABAC;
+			background-color: #34A099;
+			border-radius: 40px;
+		}
+	</style>
+</head>
+<body>
+	<div style="text-align: center;">
+  
+	<h1>Jackpot</h1><br>
+	<h1>Slot Machine</h1>
+	<div id="slots">
+		<div class="slot" id="slot1"></div>
+		<div class="slot" id="slot2"></div>
+		<div class="slot" id="slot3"></div>
+	</div>
+	<p>Coins: <span id="coins">20</span></p>
+	<p>Bet: <input type="number" id="bet" min="1" max="10" value="1"></p>
+	<button id="spinButton">Spin</button>
+	<script src="slotmachine.js"></script>
+		</div>
+</body>
+</html>
