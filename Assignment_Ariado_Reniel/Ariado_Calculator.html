@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ariado-Calculator</title>
+	<h1 style="font-family: 'Courier New', Courier, monospace;">Simple Calculator</h1>
+	<style>
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			width: 245px;
+			margin-right: 100%;
+			padding: 10px;
+			border: 1px solid #067eff;
+			background-color: #2A2F4F;
+			border-radius: 5px;
+		}
+
+		input[type="button"] {
+			width: 70px;
+			height: 50px;
+			margin: 5px;
+			font-size: 20px;
+			background-color: #E5BEEC;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		input[type="text"] {
+			width: 100%;
+			height: 50px;
+			margin-bottom: 5px;
+			font-size: 20px;
+			padding: 5px;
+			border: 1px solid #3ae1ff;
+			border-radius: 5px;
+			text-align: right;
+			color: white;
+			background-color: #917FB3;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<input type="text" id="result" disabled />
+		<input type="button" value="C" onclick="clearResult()" />
+		<input type="button" value="/" onclick="updateResult('/')" />
+		<input type="button" value="%" onclick="updateResult('%')" />
+		<input type="button" value="7" onclick="updateResult('7')" />
+		<input type="button" value="8" onclick="updateResult('8')" />
+		<input type="button" value="*" onclick="updateResult('*')" />
+		<input type="button" value="9" onclick="updateResult('9')" />
+		<input type="button" value="4" onclick="updateResult('4')" />
+		<input type="button" value="-" onclick="updateResult('-')" />
+		<input type="button" value="5" onclick="updateResult('5')" />
+		<input type="button" value="6" onclick="updateResult('6')" />
+		<input type="button" value="+" onclick="updateResult('+')" />
+		<input type="button" value="1" onclick="updateResult('1')" />
+		<input type="button" value="2" onclick="updateResult('2')" />
+		<input type="button" value="=" onclick="calculate()" />
+		<input type="button" value="3" onclick="updateResult('3')" />
+		<input type="button" value="0" onclick="updateResult('0')" />
+		<input type="button" value="." onclick="updateResult('.')" />
+	</div>
+
+<script>
+    function clearResult() {
+        document.getElementById("result").value = "";
+    }
+
+    function updateResult(value) {
+        document.getElementById("result").value += value;
+    }
+
+    function calculate() {
+        var result = eval(document.getElementById("result").value.replace(/%/g, "/100"));
+        document.getElementById("result").value = result;
+    }
+</script>
+
+</body>
+</html>
