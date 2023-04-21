@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(45deg,#d06e31,#6a4bb6,#d76e6e,#9800da);
+    background-size: 300% 300%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: color 9s ease-in-out infinite;
+}
+
+@keyframes color{
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}
+.calculator{
+    background: #323232;
+    padding: 20px;
+    border-radius: 10px;
+}
+.calculator form input{
+    border: 0;
+    outline: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: -3px -3px 25px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+}
+
+form .display{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+form .display input{
+    text-align: right;
+    flex: 1;
+    font-size: 45px;
+    box-shadow: none;
+}
+form input.operator{
+    color: #e34e4e;
+}
+
+
+#slots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #323232;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .slot {
+
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60px;
+    width: 60px;
+    height: 60px;
+    font-size: 25px;
+    border: 0;
+    outline: 0;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    border-radius: 10px;
+    font-size: 25px;
+    box-shadow: -3px -3px 25px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    color: #e34e4e;
+  }
+  .sbutton{
+    background: #e34e4e;
+    font-size: 15px;
+    width: 60px;
+    height: 60px;
+    border: 0;
+    outline: 0;
+    border-radius: 10px;
+    background: solid blanchedalmond;
+    box-shadow: -8px -8px 25px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+
+  }
+  .sbutton:hover{
+    background-color: #FFC0CB;
+    color: #000;
+  }
+
+.result-box{
+    letter-spacing: 2px;
+    line-height: 0.8;
+    width: 300px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #323232;
+    padding: 20px;
+    border-radius: 10px;
+    color: #e34e4e;
+}
+  
