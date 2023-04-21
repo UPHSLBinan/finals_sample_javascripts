@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+         body { background-color:#1A4314;}
+        .calculator {
+            width: 200px;
+            border: 1px solid #ccccccef;
+            padding: 10px;
+            margin: 0 auto;
+        }
+        .screen {
+            height: 30px;
+            border: 1px solid #ccc;
+            text-align: right;
+            margin-bottom: 10px;
+	    color: white;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        .buttons button {
+            height: 40px;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="screen" id="screen">0</div>
+        <div class="buttons">
+            <button onclick="clearScreen()">C</button>
+            <button onclick="deleteLastCharacter()">&#9003;</button>
+            <button onclick="appendCharacter('/')">/</button>
+            <button onclick="appendCharacter('*')">*</button>
+            <button onclick="appendCharacter('7')">7</button>
+            <button onclick="appendCharacter('8')">8</button>
+            <button onclick="appendCharacter('9')">9</button>
+            <button onclick="appendCharacter('-')">-</button>
+            <button onclick="appendCharacter('4')">4</button>
+            <button onclick="appendCharacter('5')">5</button>
+            <button onclick="appendCharacter('6')">6</button>
+            <button onclick="appendCharacter('+')">+</button>
+            <button onclick="appendCharacter('1')">1</button>
+            <button onclick="appendCharacter('2')">2</button>
+            <button onclick="appendCharacter('3')">3</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="appendCharacter('0')">0</button>
+            <button onclick="appendCharacter('.')">.</button>
+        </div>
+    </div>
+
+    <script>
+        let screen = document.getElementById("screen");
+        let input = "";
+
+        function appendCharacter(character) {
+            input += character;
+            screen.innerText = input;
+        }
+
+        function deleteLastCharacter() {
+            input = input.slice(0, -1);
+            screen.innerText = input;
+        }
+
+        function clearScreen() {
+            input = "";
+            screen.innerText = "0";
+        }
+
+        function calculate() {
+            try {
+                let result = eval(input);
+                screen.innerText = result;
+                input = "";
+            } catch (error) {
+                screen.innerText = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
