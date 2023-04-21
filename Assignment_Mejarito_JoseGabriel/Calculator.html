@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mejarito_J2S</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #202020;
+            color: #fff;
+        }
+      .calculator{
+        width: 175px;
+        margin: auto;
+        border: 1px solid #cac8c8;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #363636;
+      }
+      input[type="text"]{
+        width: 90%;
+        padding: 5px;
+        margin-bottom: 10px;
+        font-size: 18px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: #505050;
+        color: #fff;
+      }
+      button{
+        padding: 5px 10px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        background-color: #777;
+        color: #fff;
+      }
+      button:hover {
+        background-color: #888;
+      }
+      .result {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center;">Calculator</h1>
+    <div class="calculator">
+      <input type="text" id="inputField" disabled />
+      <div>
+        <button onclick="clearField()">C</button>
+        <button onclick="addToField('(')">(</button>
+        <button onclick="addToField(')')">)</button>
+        <button onclick="addToField('/')">/</button>
+      </div>
+      <div>
+        <button onclick="addToField('7')">7</button>
+        <button onclick="addToField('8')">8</button>
+        <button onclick="addToField('9')">9</button>
+        <button onclick="addToField('*')">*</button>
+      </div>
+      <div>
+        <button onclick="addToField('4')">4</button>
+        <button onclick="addToField('5')">5</button>
+        <button onclick="addToField('6')">6</button>
+        <button onclick="addToField('-')">-</button>
+      </div>
+      <div>
+        <button onclick="addToField('1')">1</button>
+        <button onclick="addToField('2')">2</button>
+        <button onclick="addToField('3')">3</button>
+        <button onclick="addToField('+')">+</button>
+      </div>
+      <div>
+        <button onclick="addToField('0')">0</button>
+        <button onclick="addToField('.')">.</button>
+        <button onclick="deleteChar()">DEL</button>
+        <button onclick="calculate()">=</button>
+      </div>
+      <div class="result" id="result"></div>
+    </div>
+    <script>
+        function addToField(value) {
+          document.getElementById("inputField").value += value;
+        }
+        function clearField() {
+            document.getElementById("inputField").value = "";
+            document.getElementById("result").innerHTML = "";
+        }
+        function calculate() {
+            var result = eval(document.getElementById("inputField").value);
+            document.getElementById("inputField").value = result;
+            document.getElementById("result").innerHTML = "";
+        }
+        function deleteChar() {
+            var currentValue = document.getElementById("inputField").value;
+            document.getElementById("inputField").value = currentValue.slice(0, -1);        
+        }
+    </script>
+  </body>
+</html>

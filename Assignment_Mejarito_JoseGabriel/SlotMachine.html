@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mejarito_J2S</title>
+    <style>
+        #slot-machine{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .slots{
+            display: flex;
+        }
+        .slot {
+            width: 25px;
+            height: 25px;
+            border: 1px solid black;
+            margin: 10px;
+            text-align: center;
+        }
+        #controls{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        #bet-controls{
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        #bet-amount{
+            margin: 0 10px;
+        }
+        #coin-count{
+            margin-bottom: 10px;
+        }
+        #result{
+            margin-top: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center;">Slot Machine</h1>
+    <div id="slot-machine">
+        <div class="slots">
+            <div id="slot1" class="slot"></div>
+            <div id="slot2" class="slot"></div>
+            <div id="slot3" class="slot"></div>
+        </div>
+        <div id="controls">
+            <div id="bet-controls">
+            <button id="decrease-bet">-</button>
+            <span id="bet-amount">1</span>
+            <button id="increase-bet">+</button>
+            </div>
+            <br>
+            <button id="spin-button">Spin</button>
+            <br>
+            <div id="coin-count">Coins: 20</div>
+            <div id="result"></div>
+        </div>
+    </div>
+    <script>
+        const icons = ["1", "2", "3", "4", "5"];
+        const payouts = [1, 2, 3, 4, 5];
+        const slot1 = document.getElementById("slot1");
+        const slot2 = document.getElementById("slot2");
+        const slot3 = document.getElementById("slot3");
+
+        const betAmount = document.getElementById("bet-amount");
+        const decreaseBetButton = document.getElementById("decrease-bet");
+        const increaseBetButton = document.getElementById("increase-bet");
+        const coinCount = document.getElementById("coin-count");
+        let coins = 20;
+        let bet = 1;
+
+        const spinButton = document.getElementById("spin-button");
+        spinButton.addEventListener("click", spin);
+        
+        updateBetAmountDisplay();
+        updateCoinCountDisplay();
+
+        function updateBetAmountDisplay() {
+            betAmount.textContent = bet;
+        }
+
+        function updateCoinCountDisplay() {
+            coinCount.textContent = `Coins: ${coins}`;
+        }
+
+        function spin() {
+            if (coins < bet) {
+                setResult("Not enough coins to spin.");
+                return;
+            }
+            
+            coins -= bet;
+            updateCoinCountDisplay();
+            spinSlots();
+        }
+
+        function spinSlots() {
+            
+            const slot1Index = Math.floor(Math.random() * icons.length);
+            const slot2Index = Math.floor(Math.random() * icons.length);
+            const slot3Index = Math.floor(Math.random() * icons.length);
+            
+            slot1.textContent = icons[slot1Index];
+            slot2.textContent = icons[slot2Index];
+            slot3.textContent = icons[slot3Index];
+
+            
+            if (slot1Index === slot2Index && slot2Index === slot3Index) {
+                const payout = payouts[slot1Index] * bet;
+                coins += payout;
+                setResult(`You won ${payout} coins!`);
+            } else {
+                setResult("Try again.");
+            }
+        }
+        function setResult(message) {
+            const result = document.getElementById("result");
+            result.textContent = message;
+        }
+        
+        decreaseBetButton.addEventListener("click", () => {
+            if (bet > 1) {
+                bet--;
+                updateBetAmountDisplay();
+            }
+        });
+        increaseBetButton.addEventListener("click", () => {
+            if(bet < coins){
+                bet++;
+                updateBetAmountDisplay();
+            }
+        });
+    </script>
+  </body>
+</html>
