@@ -3,6 +3,12 @@
 <head>
 	<title>Slot Machine</title>
 	<style>
+body { 
+background-image:url('gold-coins-animated-gif.gif'); 
+background-repeat:no-repeat;
+background-size: 1500px;
+
+}
 		#slot-machine {
 			width: 400px;
 			height: 300px;
@@ -28,9 +34,10 @@
 	</style>
 </head>
 <body>
+
 	<div id="slot-machine">
 		<p>Coins: <span id="coins">20</span></p>
-		<p>Bet: <input type="text" id="bet" value="1" readonly></p>
+		<p>Bet: <input type="text" id="bet" value="1"></p>
 		<p>Icons: ñ ö ó å ä</p>
 		<p>Winning Combinations: ñññ (x2) ööö (x5) óóó (x10) ååå (x20) äää (x50)</p>
 		<p>Spin: <input type="button" value="Spin" onclick="spin()"></p>
