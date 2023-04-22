@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Slot Machine Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #f0f0f0;
+    }
+    .slot {
+		color: red;
+      font-size: 3em;
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      border: 1px solid black;
+      text-align: center;
+      display: inline-block;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="container text-center">
+    <h1>Slot Machine Game</h1>
+    <div>
+      <label for="bet-input">Enter your bet (1-10 points):</label>
+      <input type="number" id="bet-input" min="1" max="10" value="1">
+      <button id="spin-btn" class="btn btn-primary">Spin</button>
+    </div>
+    <div class="mt-3">
+      <p>Your coins: <span id="coins">20</span></p>
+    </div>
+    <div class="my-5">
+      <div class="slot" id="slot-1">7</div>
+      <div class="slot" id="slot-2">7</div>
+      <div class="slot" id="slot-3">7</div>
+    </div>
+    <div>
+      <p id="result"></p>
+      <button id="reset-btn" class="btn btn-danger">Reset</button>
+    </div>
+  </div>
+  <script>
+    // Define the symbols
+    const symbols = ['♥', '♦', '♣', '♠', '7'];
+
+    // Define the payouts
+    const payouts = {
+      '♥♥♥': 5,
+      '♦♦♦': 10,
+      '♣♣♣': 15,
+      '♠♠♠': 20,
+      '777': 50
+    };
+
+
+    // Get the elements
+    const betInput = document.getElementById('bet-input');
+    const spinBtn = document.getElementById('spin-btn');
+    const coinsElem = document.getElementById('coins');
+    const slot1 = document.getElementById('slot-1');
+    const slot2 = document.getElementById('slot-2');
+    const slot3 = document.getElementById('slot-3');
+    const resultElem = document.getElementById('result');
+
+    let coins = 20;
+
+    function reset() {
+  coins = 20;
+  coinsElem.textContent = coins;
+  betInput.value = 1;
+  slot1.textContent = '';
+  slot2.textContent = '';
+  slot3.textContent = '';
+  resultElem.textContent = '';
+}
+	  const resetBtn = document.getElementById('reset-btn');
+resetBtn.addEventListener('click', reset);
+	  
+	  
+    function spin() {
+      const bet = parseInt(betInput.value);
+
+      if (coins < bet) {
+        resultElem.textContent = 'Not enough coins';
+        return;
+      }
+
+      coins -= bet;
+      coinsElem.textContent = coins;
+      
+      const symbols1 = getRandomSymbol();
+      const symbols2 = getRandomSymbol();
+      const symbols3 = getRandomSymbol();
+		
+      slot1.textContent = symbols1;
+      slot2.textContent = symbols2;
+      slot3.textContent = symbols3;
+
+      const result = checkResult(symbols1, symbols2, symbols3);
+
+      if (result) {
+        const payout = bet * payouts[result];
+        coins += payout;
+        coinsElem.textContent = coins;
+        resultElem.textContent = `You won ${payout} coins!`;
+      } else {
+        resultElem.textContent = 'You lost';
+      }
+    }
+
+    // Helper function to get a random symbol
+    function getRandomSymbol() {
+      const index = Math.floor(Math.random() * symbols.length);
+      return symbols[index];
+    }
+
+    // Helper function to check the result
+    function checkResult(symbols1, symbols2, symbols3) {
+      const result = symbols1 + symbols2 + symbols3;
+      return payouts[result] ? result : null;
+    }
+
+    // Attach the event listener
+    spinBtn.addEventListener('click', spin);
+  </script>
+</body>
+</html>
