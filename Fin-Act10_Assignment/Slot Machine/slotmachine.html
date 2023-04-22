@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slot Machine</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="container">
+    <h1>Slot Machine</h1>
+    <p id="message">Place your bet and spin the reels!</p>
+    <div id="slot-machine">
+      <div class="slot">
+        <div class="symbol"></div>
+      </div>
+      <div class="slot">
+        <div class="symbol"></div>
+      </div>
+      <div class="slot">
+        <div class="symbol"></div>
+      </div>
+    </div>
+    <p id="coins">Coins: 20</p>
+    <form>
+      <label for="bet">Bet:</label>
+      <input type="number" id="bet" name="bet" min="1" max="10" value="1">
+      <button type="button" id="spin">Spin</button><br>
+      <button type="button" onclick="addTenCoins()">+10 Coins</button>
+      <button type="button" onclick="addTwentyCoins()">+20 Coins</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
