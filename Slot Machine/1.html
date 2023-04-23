@@ -1,0 +1,129 @@
+<html>
+<head>
+	<title>Slot Machine </title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+	
+h1 {
+text-align: center;
+color: #fff;
+font-family: "Lucida Console", Monaco, monospace;
+font-size: 60px;
+letter-spacing: 2.6px;
+word-spacing: 1.4px;
+color: #FFFFFF;
+font-weight: 700;
+text-decoration: none;
+font-style: italic;
+font-variant: normal;
+text-transform: none;
+		}
+.slot {
+	height: 100px;
+	border: 2px solid white;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 48px;
+}
+#result {
+	display: none;
+} </style>
+<body style="background-image: url('z.jpg'); background-size: cover">
+      <h1> Slot Machine </h1>
+
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-body">
+						<div class="row justify-content-center">
+							<div class="col-md-3 slot" id="one"></div>
+							<div class="col-md-3 slot" id="two"></div>
+							<div class="col-md-3 slot" id="three"></div>
+						</div>
+						<div class="row justify-content-center mt-3">
+							<div class="col-md-6">
+								<div class="row justify-content-center">
+									<div class="col-md-6">
+										<p>Coins: <span id="coins">20</span></p>
+									</div>
+									<div class="col-md-6">
+										<p>Place your bet:  <span id="bet">1</span></p>
+									</div>
+								</div>
+								<div class="row justify-content-center">
+									<div class="col-md-6">
+										<input type="range" min="1" max="10" value="1" step="1" id="bet-slider" onchange="updateBet()">
+									</div>
+									<div class="col-md-6">
+										<button class="btn btn-primary" onclick="spin()">Spin</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row justify-content-center mt-3">
+							<div class="col-md-6">
+								<div class="alert alert-success" role="alert" id="result"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script> const icons = ["🍇", "🍊", "🍋", "🍉", "🍒"];
+let coins = 20;
+let bet = 1;
+
+function spin() {
+	
+	coins -= bet;
+	document.getElementById("coins").innerHTML = coins;
+	
+	let one = Math.floor(Math.random() * 5);
+	let two = Math.floor(Math.random() * 5);
+	let three = Math.floor(Math.random() * 5);
+	
+	document.getElementById("one").innerHTML = icons[one];
+	document.getElementById("two").innerHTML = icons[two];
+	document.getElementById("three").innerHTML = icons[three];
+
+	
+	if (one === two && two === three) 
+	{
+		coins += bet * 5;
+		document.getElementById("coins").innerHTML = coins;
+		document.getElementById("result").innerHTML = `You won ${bet * 5} coins!`;
+		document.getElementById("result").classList.remove("alert-danger");
+		document.getElementById("result").classList.add("alert-success");
+	} 
+	else if (one === two || two === three || one === three) 
+	{
+		coins += bet * 2;
+		document.getElementById("coins").innerHTML = coins;
+		document.getElementById("result").innerHTML = `You won ${bet * 2} coins!`;
+		document.getElementById("result").classList.remove("alert-danger");
+		document.getElementById("result").classList.add("alert-success");
+	} 
+	else 
+	{		
+		document.getElementById("result").innerHTML = `Sorry, try again!`;
+		document.getElementById("result").classList.remove("alert-success");
+		document.getElementById("result").classList.add("alert-danger");
+	}
+	document.getElementById("result").style.display = "block";
+	document.getElementById("bet").innerHTML = 1;
+	document.getElementById("bet-slider").value = 1;
+}
+
+function updateBet() 
+{	
+	bet = document.getElementById("bet-slider").value;
+	document.getElementById("bet").innerHTML = bet;
+} 
+</script>
+</body>
+</html>
