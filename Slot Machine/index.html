@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"defer></script>
+	
+  <title>Slot Machine</title>
+</head>
+<body>
+	<center>
+	<h1>Slot Machine</h1>
+	
+	<br>
+	
+	<p>Number of Coins: <span id="coins">20</span></p>
+	
+	<br>
+
+	<div id="slots">
+		
+		<div class="slot"></div>
+		<div class="slot"></div>
+		<div class="slot"></div>
+	
+</div>
+		
+	<form id="slot-machine">
+		
+			<button type="button" id="betbtn">Bet a number</button>
+			<input type="hidden" id="bets" min="1" max="10" value="1">
+			<button type="button" id="spinbtn">Spin</button>
+			<button type="button" onclick="window.location.reload();" id="spinbtn">Reload</button>
+		  
+		</form>
+		  
+
+	</form>
+
+
+	<p id="result"></p>
+	
+	<br>
+	<br>
+	<br>
+
+	<p>List of the prices:</p>
+	<ul>
+		<li><span class="symbol">🍌🍌🍌</span> - x2 the reward</li>
+		<li><span class="symbol">🍄🍄🍄</span> - x5 the reward</li>
+		<li><span class="symbol">🥒🥒🥒</span> - x10 the reward</li>
+		<li><span class="symbol">🍕🍕🍕</span> - x20 the reward</li>
+		<li><span class="symbol">🧋🧋🧋</span> - x40 the reward</li>
+	</ul>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <footer> Created By: Symon Gabriel Bautista</footer>
+
+</center>
+	
+</body>
+</html>
