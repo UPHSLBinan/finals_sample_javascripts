@@ -9,17 +9,23 @@
     body {
       background-color: #f0f0f0;
     }
-    .slot {
-		color: red;
-      font-size: 3em;
-      width: 100px;
-      height: 100px;
-      background-color: white;
-      border: 1px solid black;
-      text-align: center;
-      display: inline-block;
-      margin-right: 10px;
-    }
+   .slot {
+  color: red;
+  font-size: 3em;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+  display: inline-block;
+  margin-right: 10px;
+  animation-name: spin;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+
+}
   </style>
 </head>
 <body class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
@@ -126,6 +132,57 @@ resetBtn.addEventListener('click', reset);
 
     // Attach the event listener
     spinBtn.addEventListener('click', spin);
+function spin() {
+  const bet = parseInt(betInput.value);
+
+  if (coins < bet) {
+    resultElem.textContent = 'Not enough coins';
+    return;
+  }
+
+  coins -= bet;
+  coinsElem.textContent = coins;
+
+  let count = 0;
+  let duration = 2000; // in milliseconds
+  let interval = 100; // in milliseconds
+  let maxCount = duration / interval;
+  
+  let intervalId = setInterval(() => {
+    count++;
+    if (count > maxCount) {
+      clearInterval(intervalId);
+      showResult();
+    } else {
+      // change symbols
+      slot1.textContent = getRandomSymbol();
+      slot2.textContent = getRandomSymbol();
+      slot3.textContent = getRandomSymbol();
+    }
+  }, interval);
+
+  function showResult() {
+    const symbols1 = getRandomSymbol();
+    const symbols2 = getRandomSymbol();
+    const symbols3 = getRandomSymbol();
+    slot1.textContent = symbols1;
+    slot2.textContent = symbols2;
+    slot3.textContent = symbols3;
+
+    const result = checkResult(symbols1, symbols2, symbols3);
+
+    if (result) {
+      const payout = bet * payouts[result];
+      coins += payout;
+      coinsElem.textContent = coins;
+      resultElem.textContent = `You won ${payout} coins!`;
+    } else {
+      resultElem.textContent = 'You lost';
+    }
+  }
+}
+
+
   </script>
 </body>
 </html>
