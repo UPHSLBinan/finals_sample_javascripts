@@ -1,10 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <link href="https://fonts.cdnfonts.com/css/shine-of-love" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/shine-of-love" rel="stylesheet">
     <title>Slot Machine</title>
-	<style>
-	@import url('https://fonts.cdnfonts.com/css/shine-of-love');
+<style>
+      @keyframes spin {
+        0% {
+          transform: translateY(0);
+        }
+        10% {
+          transform: translateY(-10%);
+        }
+        20% {
+          transform: translateY(-20%);
+        }
+        30% {
+          transform: translateY(-30%);
+        }
+        40% {
+          transform: translateY(-40%);
+        }
+        50% {
+          transform: translateY(-50%);
+        }
+        60% {
+          transform: translateY(-60%);
+        }
+        70% {
+          transform: translateY(-70%);
+        }
+        80% {
+          transform: translateY(-80%);
+        }
+        90% {
+          transform: translateY(-90%);
+        }
+        100% {
+          transform: translateY(-100%);
+        }
+      }
+      .slotmachinewindow span {
+        display: inline-block;
+        padding: 0 8px;
+        animation: spin 1s ease-out;
+      }
+	  @import url('https://fonts.cdnfonts.com/css/shine-of-love');
 	
 	html, body {
   height: 100%;
@@ -132,52 +172,59 @@ padding-top: 16px;
   padding-left: 40px;
   color: white;
 }
-	</style>
+    </style>
   </head>
   <body>
   
- 
-	
 	<div class="slotmachinewindow">
-	
-	<div id="coinss" class="coinsbar">
-    <p style="font-family: 'Shine of Love', sans-serif; font-color: white;"> <span id="coins">20</span></p></div>
-	
-	
-	<img src="slotbanner.png" height="250px">
-    <p><br><br><span id="result" ></span></p>
-	<div id="betbarr" class="betbar">	
-    <p  id="bett"style="color: #144b8eff; ">Bet: <input type="number" style="font-family: 'Shine of Love', sans-serif; background-color: #01355dff; color: white; border-radius: 10px; " id="bet" min="1" max="10" value="1"></p></div>
-	<button id="spinbutton" style="font-family: 'Shine of Love', sans-serif; font-color: white;" onclick="spin()" >SPIN</button>
-	 </div> 
-<script style="content-align: center;">
-	const icons = ["🍒", "🍋", "🍇", "🍊", "🍉"];
-	const payouts = [0, 2, 5, 10, 20];
+	  <div id="coinss" class="coinsbar">
+	    <p style="font-family: 'Shine of Love', sans-serif; font-color: white;">
+	      <span id="coins">20</span>
+	    </p>
+	  </div>
+	  <img src="slotbanner.png" height="250px">
+	  <p><br><br><span id="result" ></span></p>
+	  <div id="betbarr" class="betbar">	
+	    <p id="bett" style="color: #144b8eff; ">
+	      Bet: <input type="number" style="font-family: 'Shine of Love', sans-serif; background-color: #01355dff; color: white; border-radius: 10px; " id="bet" min="1" max="10" value="1">
+	    </p>
+	  </div>
+	  <button id="spinbutton" style="font-family: 'Shine of Love', sans-serif; font-color: white;" onclick="spin()">SPIN</button>
+	</div> 
 
-	let coins = 20;
-
-	function spin() {
-	  const bet = Number(document.getElementById("bet").value);
-	  if (bet > coins) {
-	    alert("Not enough coins!");
-	    return;
-	  }
-	  coins -= bet;
-	  document.getElementById("coins").innerText = coins;
-	  const results = [icons[Math.floor(Math.random() * 5)], icons[Math.floor(Math.random() * 5)], icons[Math.floor(Math.random() * 5)]];
-	  document.getElementById("result").innerHTML = results.map(icon => `<span style="padding: 0 8px">${icon}</span>`).join("&nbsp;");
-	  let payout = 0;
-	  if (results[0] === results[1] && results[1] === results[2]) {
-	    payout = payouts[icons.indexOf(results[0])];
-	    coins += bet * payout;
+	<script>
+	  const icons = ["🍒", "🍋", "🍇", "🍊", "🍉"];
+	  const payouts = [0, 2, 5, 10, 20];
+	  let coins = 20;
+	  
+	  function spin() {
+	    const bet = Number(document.getElementById("bet").value);
+	    if (bet > coins) {
+	      alert("Not enough coins!");
+	      return;
+	    }
+	    coins -= bet;
 	    document.getElementById("coins").innerText = coins;
-	    alert(`You won ${bet * payout} coins!`);
+	    const results = [
+	      icons[Math.floor(Math.random() * 5)],
+	      icons[Math.floor(Math.random() * 5)],
+	      icons[Math.floor(Math.random() * 5)]
+	    ];
+	    document.getElementById("result").innerHTML = results
+	      .map(icon => `<span style="padding: 0 8px">${icon}</span>`)
+	      .join("&nbsp;");
+	    let payout = 0;
+	    if (results[0] === results[1] && results[1] === results[2]) {
+	      payout = payouts[icons.indexOf(results[0])];
+	      coins += bet * payout;
+	      document.getElementById("coins").innerText = coins;
+	      alert(`You won ${bet * payout} coins!`);
+	    }
+	    else {
+	      alert("Try again!");
+	    }
 	  }
-	  else {
-	    alert("Try again!");
-	  }
-	}
-</script>
+	</script>
 	
   </body>
 </html>

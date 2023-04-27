@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+<link href="https://fonts.cdnfonts.com/css/calculator" rel="stylesheet">
+	<style>
+	   @import url('https://fonts.cdnfonts.com/css/calculator');
+	html, body {
+  height: 100%;
+}
+	body{
+	background-image: url('backgroundbg.png');
+			 background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+	}
+		/* Styling for the calculator buttons and input field */
+		button {
+		background-image: url('buttonsbg.png');
+			background-size: cover;
+			border-radius: 10px;
+			border: 2px solid rgba(0, 0, 0, 0.5) !important;
+			font-family: arial;
+			font-weight: bold;
+			color: #002255ff;
+			font-size: 25px;
+			width: 60px;
+			height: 60px;
+			margin: 5px;
+			border: none;
+			background-color: #f2f2f2;
+			cursor: pointer;
+		}
+		#buttons1{
+		background-image: url('buttonsbgdark.png') !important;
+		color: white;
+		}
+		
+		
+		button:hover {
+			background-image: url('buttonsbghover.png');
+		}
+		
+		#buttons1:hover {
+		background-image: url('buttonsbgdarkhover.png') !important;
+		color: white;
+		}
+		input[type="text"] {
+			font-size: 30px;
+			width: 220px;
+			height: 60px;
+			margin: 5px;
+			border: none;
+			text-align: right;
+			padding-right: 5px;
+			background-color: #f2f2f2;
+		}
+		.calcWindow{
+			background-image: url('calculatorbg.png');
+			background-size: cover;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			width: 330px;
+			height: 470px;
+			margin: auto;
+			border-radius: 30px;
+			border: 2px solid rgba(0, 0, 0, 0.5);
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+			  position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		.buttonRow {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+		}
+	</style>
+</head>
+<body>
+<div class="calcWindow">
+<br>
+	<img src="logosolar.png" height="30px">
+	<!-- Calculator display input field -->
+	<input type="text" id="result" style="font-family: 'Calculator', sans-serif; font-weight: bold; font-size: 60px; color: #333333ff; background-image: url('inputwindow.png'); background-size: cover; border-radius: 20px; height: 50px; width: 230px; padding: 20px; border: 2px solid rgba(0, 0, 0, 0.5);" readonly>
+	<br>
+	<!-- Calculator buttons -->
+	<div class="buttonRow">
+		<button id="buttons1" onclick="clearResult()"  >C</button>
+		<button id="buttons1" onclick="appendValue('/')">/</button>
+		<button id="buttons1" onclick="appendValue('*')">*</button>
+		<button id="buttons1" onclick="appendValue('-')">-</button>
+	</div>
+	<div class="buttonRow">
+		<button onclick="appendValue('7')">7</button>
+		<button onclick="appendValue('8')">8</button>
+		<button onclick="appendValue('9')">9</button>
+		<button id="buttons1" onclick="appendValue('+')">+</button>
+	</div>
+	<div class="buttonRow">
+		<button onclick="appendValue('4')">4</button>
+		<button onclick="appendValue('5')">5</button>
+		<button onclick="appendValue('6')">6</button>
+		<button id="buttons1" onclick="calculate()">=</button>
+	</div>
+	<div class="buttonRow">
+		<button onclick="appendValue('1')">1</button>
+		<button onclick="appendValue('2')">2</button>
+		<button onclick="appendValue('3')">3</button>
+		<button onclick="appendValue('0')">0</button>
+		
+	</div>
+	<br>
+</div>
+
+
+	<script>
+		let value = '';
+
+		// Function to append the clicked button value or typed value to the input field
+		function appendValue(val) {
+			if (typeof val === 'string') {
+				value += val;
+			} else if (typeof val === 'number') {
+				value += val.toString();
+			}
+			document.getElementById('result').value = value;
+		}
+
+		// Function to clear the input field
+function clearResult() {
+  value = '';
+  document.getElementById('result').value = value;
+  previousResult = ''; // Reset previousResult to empty string
+}
+
+		// Function to calculate the result based on the operator and operands
+// Function to calculate the result based on the operator and operands
+let previousResult = '';
+let previousOperator = '';
+
+function calculate() {
+  let expression = value;
+  if (expression) {
+    try {
+      // Use previousResult as the first operand if it exists
+      if (previousResult) {
+        // Use the previous operator if it exists
+        if (previousOperator) {
+          expression = previousResult + previousOperator + expression;
+        } else {
+          expression = previousResult + '+' + expression;
+        }
+      }
+      value = eval(expression);
+      document.getElementById('result').value = value;
+      previousResult = value; // Store the current result as previousResult
+      // Store the current operator as previousOperator
+      previousOperator = expression.match(/[-+*/]/)[0];
+    } catch (e) {
+      alert('Invalid expression');
+    }
+  }
+}
+
+		// Event listener for keyboard input
+		document.addEventListener('keydown', function(event) {
+			// Allow only digits, operators, and backspace/delete keys
+			if (/[0-9+\-*/]|Backspace|Delete/.test(event.key)) {
+				if (event.key === 'Backspace' || event.key === 'Delete') {
+					// Handle backspace/delete keys separately
+					event.preventDefault();
+					value = value.slice(0, -1);
+					document.getElementById('result').value = value;
+				} else {
+					// Append the typed character to the input field
+					event.preventDefault();
+					appendValue(event.key);
+				}
+			}
+		});
+		
+	</script>
+</body>
+</body>
+</html>

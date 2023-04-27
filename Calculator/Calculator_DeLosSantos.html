@@ -69,9 +69,9 @@
 			border: 2px solid rgba(0, 0, 0, 0.5);
 			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 			  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 		}
 		.buttonRow {
 			display: flex;
@@ -132,23 +132,40 @@
 		}
 
 		// Function to clear the input field
-		function clearResult() {
-			value = '';
-			document.getElementById('result').value = value;
-		}
+function clearResult() {
+  value = '';
+  document.getElementById('result').value = value;
+  previousResult = ''; // Reset previousResult to empty string
+}
 
 		// Function to calculate the result based on the operator and operands
-		function calculate() {
-			let expression = value;
-			if (expression) {
-				try {
-					value = eval(expression);
-					document.getElementById('result').value = value;
-				} catch (e) {
-					alert('Invalid expression');
-				}
-			}
-		}
+// Function to calculate the result based on the operator and operands
+let previousResult = '';
+let previousOperator = '';
+
+function calculate() {
+  let expression = value;
+  if (expression) {
+    try {
+      // Use previousResult as the first operand if it exists
+      if (previousResult) {
+        // Use the previous operator if it exists
+        if (previousOperator) {
+          expression = previousResult + previousOperator + expression;
+        } else {
+          expression = previousResult + '+' + expression;
+        }
+      }
+      value = eval(expression);
+      document.getElementById('result').value = value;
+      previousResult = value; // Store the current result as previousResult
+      // Store the current operator as previousOperator
+      previousOperator = expression.match(/[-+*/]/)[0];
+    } catch (e) {
+      alert('Invalid expression');
+    }
+  }
+}
 
 		// Event listener for keyboard input
 		document.addEventListener('keydown', function(event) {
@@ -166,6 +183,8 @@
 				}
 			}
 		});
+		
 	</script>
+</body>
 </body>
 </html>
