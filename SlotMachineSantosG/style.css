@@ -1,0 +1,134 @@
+body {
+
+	background-image:url("bg2.jpg");
+	background-repeat: no-repeat;
+  text-align: center;
+	background-size: cover;
+}
+
+h2 {
+  margin-top: 30px;
+	font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+  font-size: 100px;
+  font-weight: bold;
+	color: mediumorchid;
+    -webkit-text-stroke: 1px  yellow;
+    margin: 0 auto;
+}
+
+p {
+  font-size: 50px;
+  color: #333;
+	font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+	color: mediumorchid;
+    -webkit-text-stroke: 1px  yellow;
+    margin: 0 auto;
+}
+
+#coins {
+  font-weight: bold;
+	font-size: 30px;
+  color: #ffbf00;
+}
+
+input[type="number"] {
+  font-size: 38px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+}
+
+button {
+  margin-top: 20px;
+  font-size: 25px;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffbf00;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #ffa500;
+}
+
+#slots {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slot {
+  width: 100px;
+  height: 100px;
+  margin: 0 15px;
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  line-height: 80px;
+  border: 2px solid #ffbf00;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffa500;
+  background-image: linear-gradient(to bottom, #ffa500, #ff8c00);
+}
+
+.slot:nth-child(1) {
+  animation: spin-1 2s ease-out 0s infinite;
+}
+
+.slot:nth-child(2) {
+  animation: spin-2 2s ease-out 0.25s infinite;
+}
+
+.slot:nth-child(3) {
+  animation: spin-3 2s ease-out 0.5s infinite;
+}
+
+@keyframes spin-1 {
+  from { transform: rotateX(0); }
+  to { transform: rotateX(360deg); }
+}
+
+@keyframes spin-2 {
+  from { transform: rotateX(180deg); }
+  to { transform: rotateX(540deg); }
+}
+
+@keyframes spin-3 {
+  from { transform: rotateX(360deg); }
+  to { transform: rotateX(720deg); }
+}
+
+#result {
+  margin-top: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+
+
+}
+
+}
+
+img {
+	align-items: flex-end;
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 800px;
+  height: 500px;
+  animation: move-right 2s ease-in-out infinite alternate;
+}
+
+
+
+
