@@ -1,0 +1,79 @@
+
+
+
+.machine {
+	max-width: 600px;
+	margin-right: 250px;
+	margin-top: 70px;
+	padding: 20px;
+	box-sizing:content-box;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font: bold;
+	float: right;
+	
+}
+
+.header {
+	display: flex;
+	justify-content:center;
+	margin-bottom: 20px;
+	color: #dfcfe4
+}
+.token{
+	display:contents;
+	justify-content:center;
+	margin-bottom: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #dfcfe4
+}
+.slots {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.slot {
+	width: 200px;
+	height: 200px;
+	border: 2px solid #d97cf5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 50px;
+}
+
+.controls {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+
+}
+.controls.button {
+	background-color: #d97cf5;
+}
+
+.Script {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color:#dfcfe4;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+button {
+	font-size: 20px;
+	padding: 10px 20px;
+	border-radius: 10px;
+}
+
+#result {
+	font-size: 25px;
+	font-weight: bold;
+	color: #dfcfe4;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}

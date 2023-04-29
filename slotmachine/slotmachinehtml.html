@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Basic Slot Machine</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body style="background-image:url(news.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;">
+	<div class="machine">
+		<div class="header">
+			<h1>Slot Machine</h1>
+		</div>
+        <div class="token">
+            <p>Token: <span id="coins">20</span></p><br>
+			<p>  Bet Amount: <input type="number" id="bet" min="1" max="10" value="1"></p>
+        </div>
+		<div class="slots">
+			<div class="slot" id="slot1"></div>
+			<div class="slot" id="slot2"></div>
+			<div class="slot" id="slot3"></div>
+		</div>
+		<div class="controls">
+			<button id="spin">SPIN</button>
+			<button id="reset">RESET</button>
+		</div>
+		<div class="Script">
+			<p>MATCH 3 SYMBOLS TO WIN</p>
+		</div>
+        <div class="end">
+            <p id="result"></p>
+        </div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
