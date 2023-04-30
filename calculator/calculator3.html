@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		body {
+		background-image: url("background.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		font-family: Arial, sans-serif;
+		font-size: 16px;
+		line-height: 1.5;
+		color: #fff;
+		font-family: Arial, sans-serif;
+		font-size: 16px;
+		line-height: 1.5;
+		color: #fff;
+		}
+		.container {
+  		max-width: 500px;
+  		margin: 0 auto;
+  		padding: 2rem;
+  		border-radius: 5px;
+  		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  		background-color: rgba(255, 255, 255, 0.8);
+  		backdrop-filter: blur(5px);
+  		border: 2px solid #ccc;
+		}
+
+
+
+
+		h1, h2, h3, h4, h5, h6 {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-weight: 400;
+			margin-top: 0;
+			margin-bottom: 0.5rem;
+			color: #333;
+		}
+
+		h1 {
+			font-size: 3rem;
+			margin-bottom: 1.5rem;
+		}
+
+		h2 {
+			font-size: 2rem;
+			margin-bottom: 1rem;
+		}
+
+		
+
+		.form-group {
+			margin-bottom: 2rem;
+		}
+		
+		.form-control {
+			height: 60px;
+			font-size: 2rem;
+			border: none;
+			border-radius: 5px;
+			padding: 1rem;
+			background-color: #f2f2f2;
+			color: #333;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+			text-align: right;
+		}
+
+		input[type="button"] {
+			width: 60px;
+			height: 60px;
+			font-size: 2rem;
+			background-color: #fff;
+			color: #333;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+			cursor: pointer;
+			transition: background-color 0.2s ease-in-out;
+		}
+
+		input[type="button"]:hover,
+		input[type="button"]:focus {
+			background-color: #ccc;
+		}
+
+		.calculator-button {
+			display: inline-block;
+			margin: 5px;
+		}
+
+		.calculator-row {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+		#clear-all {
+			background-color: #f44336;
+			color: #fff;
+			transition: background-color 0.2s ease-in-out;
+		}
+
+		#clear-all:hover,
+		#clear-all:focus {
+			background-color: #c62828;
+		}
+
+		#clear-last {
+			background-color: #2196f3;
+			color: #fff;
+			transition: background-color 0.2s ease-in-out;
+		}
+
+		#clear-last:hover,
+		#clear-last:focus {
+			background-color: #0d47a1;
+		}
+	</style>
+</head>
+<body>
+	
+<div class="container">
+	<div style="text-align: center;">
+  <h1>Calculator</h1>
+</div>
+
+	<form>
+		<div class="form-group">
+		
+			<input type="text" class="form-control" id="display" disabled>
+		</div>
+		<div class="calculator-row">
+			<div class="calculator-button"><input type="button" value="7" onclick="addToDisplay('7')"></div>
+			<div class="calculator-button"><input type="button" value="8" onclick="addToDisplay('8')"></div>
+			<div class="calculator-button"><input type="button" value="9" onclick="addToDisplay('9')"></div>
+			<div class="calculator-button"><input type="button" value="+" onclick="addToDisplay('+')"></div>
+		</div>
+		<div class="calculator-row">
+			<div class="calculator-button"><input type="button" value="4" onclick="addToDisplay('4')"></div>
+			<div class="calculator-button"><input type="button" value="5" onclick="addToDisplay('5')"></div>
+			<div class="calculator-button"><input type="button" value="6" onclick="addToDisplay('6')"></div>
+			<div class="calculator-button"><input type="button" value="-" onclick="addToDisplay('-')"></div>
+		</div>
+		<div class="calculator-row">
+			<div class="calculator-button"><input type="button" value="1" onclick="addToDisplay('1')"></div>
+			<div class="calculator-button"><input type="button" value="2" onclick="addToDisplay('2')"></div>
+			<div class="calculator-button"><input type="button" value="3" onclick="addToDisplay('3')"></div>
+			<div class="calculator-button"><input type="button" value="*" onclick="addToDisplay('*')"></div>
+		</div>
+		<div class="calculator-row">
+			<div class="calculator-button"><input type="button" value="0" onclick="addToDisplay('0')"></div>
+			<div class="calculator-button"><input type="button" value="." onclick="addToDisplay('.')"></div>
+			<div class="calculator-button"><input type="button" value="/" onclick="addToDisplay('/')"></div>
+			<div class="calculator-button"><input type="button" id="clear-all" value="AC" onclick="clearDisplay()"></div>
+		</div>
+		<div class="calculator-row">
+			<div class="calculator-button"><input type="button" id="clear-last" value="C" onclick="clearLastEntry()"></div>
+			<div class="calculator-button"><input type="button" value="=" onclick="calculate()"></div>
+		</div>
+		
+	</form>
+</div>
+<script>
+	let display = document.getElementById('display');
+	
+	function addToDisplay(value) {
+		display.value += value;
+	}
+
+	function clearDisplay() {
+		display.value = '';
+	}
+
+	function clearLastEntry() {
+		display.value = display.value.slice(0, -1);
+	}
+
+	function calculate() {
+		try {
+			display.value = eval(display.value);
+		} catch (e) {
+			display.value = 'Error';
+		}
+	}
+</script>
+</body>
+</html>
