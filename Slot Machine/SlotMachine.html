@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  
+    <title>Slot Machine</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+	  <div class="container">
+    <h1>Number Slot Machine</h1>
+    <p>Balance: <span id="balance">20</span> coins</p>
+    <p>Bet: <input type="number" id="bet" min="1" max="10" value="1"></p>
+    <button id="spin-btn" onclick="spin()">Spin</button>
+    <div id="slots">
+      <div class="slot"></div>
+      <div class="slot"></div>
+      <div class="slot"></div>
+    </div>
+	  
+    <script> 
+	  // Define the possible icons for the slots
+const icons = ['1', '2', '3', '4', '5', '6','7','8','9','10'];
+
+// Get references to the DOM elements
+const balanceEl = document.getElementById('balance');
+const betEl = document.getElementById('bet');
+const slotsEl = document.getElementById('slots');
+
+let balance = 20;
+
+function spin() {
+  // Get the bet amount
+  const bet = parseInt(betEl.value);
+
+  // Make sure the bet is valid
+  if (bet > balance) {
+    alert("You do not have enough coins to make that bet.");
+    return;
+  }
+
+  // Deduct the bet from the balance
+  balance -= bet;
+
+  // Update the balance display
+  balanceEl.textContent = balance;
+
+  // Clear the slots
+  slotsEl.innerHTML = '';
+
+  // Spin the slots
+  const slots = [];
+  for (let i = 0; i < 3; i++) {
+    const icon = icons[Math.floor(Math.random() * icons.length)];
+    const slotEl = document.createElement('div');
+    slotEl.classList.add('slot');
+    slotEl.textContent = icon;
+    slotsEl.appendChild(slotEl);
+    slots.push(icon);
+  }
+
+  // Check if the player has won
+  if (slots[0] === slots[1] && slots[1] === slots[2]) {
+  
+    
+    // Alert the player that they have won
+    alert("You won!");
+  }
+}
+
+	  </script>
+	  </div>
+  </body>
+</html>

@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	
+		<!--Cascading Style Sheet-->
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			body{
+				background-image: url("calculatorBg.jpg");
+				text-align:center;
+			}
+			.container{
+				display:flex;
+				align-items:center;
+				justify-content:center;
+				margin:50px;
+			}
+			.container .number{
+				margin-bottom: 10px;
+				font-size:50px;
+				border-radius: 5px;
+				outline:none;
+				border:none;
+				background:black;
+				color:white;
+				text-align: right;
+				width:250px;
+				height:70px;
+				padding:2px 5px;
+			}
+			.inner{
+				display:block;
+				background-color:#3D597B;
+				border-radius:20px;
+				box-shadow: 5px 5px 2px #032541;
+				padding:20px;
+			}
+			.buttons{
+				display:block;
+			}
+			.buttons input{
+				width:65px;
+				height:65px;
+				margin-bottom:10px;
+				border-radius:10px;
+				border:none;
+				outline:none;
+				background:black;
+				color:white;
+				font-size:15px;
+			}
+			.buttons input:hover{
+				background-color:#153164;
+				transition: 1ms;
+			}
+			.buttons .btnClr, .buttons .btnEqu{
+				width: 105px;
+			}
+			.inner h1{
+				font-size: 15px;
+				text-align: justify;
+				color: white;
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+		<div class="container">
+		<div class="inner">
+			 <h1>CALCULATOR</h1>
+			<input type="text" class="number" readonly value="0">
+			<div class="buttons">
+				<div>
+					<input type="button" value="9" class="btn9">
+					<input type="button" value="8" class="btn8">
+					<input type="button" value="7" class="btn7">
+					<input type="button" value="÷" class="btnDiv">
+				</div>
+				<div>
+					<input type="button" value="6" class="btn6">
+					<input type="button" value="5" class="btn5">
+					<input type="button" value="4" class="btn4">
+					<input type="button" value="×" class="btnMul">
+				</div>
+				<div>
+					<input type="button" value="3" class="btn3">
+					<input type="button" value="2" class="btn2">
+					<input type="button" value="1" class="btn1">
+					<input type="button" value="-" class="btnSub">
+				</div>
+				<div>
+					<input type="button" value="." class="btnDec">
+					<input type="button" value="0" class="btn0">
+					<input type="button" value="+/-" class="btnNeg">
+					<input type="button" value="+" class="btnAdd">
+				</div>
+				<div>
+					<input type="button" value="C" class="btnClr">
+					<input type="button" value="=" class="btnEqu">
+				</div>
+			</div>
+		</div>
+		</div>
+		
+		<!--Javascript-->
+		<script>
+			
+			document.querySelector(".btn9").onclick = function(){
+				var number = document.querySelector(".number");
+				callMe();
+				number.value += 9;
+			}
+			document.querySelector(".btn8").onclick = function(){
+				var number = document.querySelector(".number");
+				callMe();
+				number.value += 8;
+			}
+			document.querySelector(".btn7").onclick = function(){
+				var number = document.querySelector(".number");
+				callMe();
+				number.value += 7;
+			}
+			document.querySelector(".btn6").onclick = function(){
+				var number = document.querySelector(".number");
+				callMe();
+				number.value += 6;
+			}
+			document.querySelector(".btn5").onclick = function(){
+				var number = document.querySelector(".number");
+				callMe();
+				number.value += 5;
+			}
+			document.querySelector(".btn4").onclick = function(){
+				var number = document.querySelector(".number");
+				callMe();
+				number.value += 4;
+			}
+			document.querySelector(".btn3").onclick = function(){
+				var number = document.querySelector(".number");
+				callMe();
+				number.value += 3;
+			}
+			document.querySelector(".btn2").onclick = function(){
+				var number = document.querySelector(".number");
+				callMe();
+				number.value += 2;
+			}
+			document.querySelector(".btn1").onclick = function(){
+				var number = document.querySelector(".number");
+				callMe();
+				number.value += 1;
+			}
+			document.querySelector(".btn0").onclick = function(){
+				var number = document.querySelector(".number");
+				callMe();
+				number.value += 0;
+			}
+			document.querySelector(".btnDec").onclick = function(){
+				var number = document.querySelector(".number");
+				callMe();
+				number.value += ".";
+			}
+			document.querySelector(".btnNeg").onclick = function(){
+				var number = document.querySelector(".number");
+				callMe();
+				var neg = number.value;
+				neg = Number(neg);
+				neg *= -1;
+				number.value = neg;
+			}
+			
+			function callMe(){
+				var number = document.querySelector(".number");
+				if(number.value =="0"){
+					number.value = "";
+				}
+			}
+			
+			//arithmetic
+			let x;
+			let y;
+			let z;
+			let op;
+			
+			document.querySelector(".btnMul").onclick = function(){
+				var number = document.querySelector(".number");
+				if(number.value != "0"){
+					x = number.value;
+					op = '×';
+					number.value = "";
+				}
+			}
+			document.querySelector(".btnDiv").onclick = function(){
+				var number = document.querySelector(".number");
+				if(number.value != "0"){
+					x = number.value;
+					op = '÷';
+					number.value = "";
+				}
+			}
+			document.querySelector(".btnAdd").onclick = function(){
+				var number = document.querySelector(".number");
+				if(number.value != "0"){
+					x = number.value;
+					op = '+';
+					number.value = "";
+				}
+			}
+			document.querySelector(".btnSub").onclick = function(){
+				var number = document.querySelector(".number");
+				if(number.value != "0"){
+					x = number.value;
+					op = '-';
+					number.value = "";
+				}
+			}
+			
+			//equals
+			document.querySelector(".btnEqu").onclick = function(){
+				var number = document.querySelector(".number");
+				if(number.value != "0"){
+					y = number.value;
+					number.value = "";
+					
+					switch(op){
+						case '×':
+							x = Number(x);
+							y = Number(y);
+							z = x * y;
+							number.value = z;
+							break;
+						case '÷':
+							x = Number(x);
+							y = Number(y);
+							z = x / y;
+							number.value = z;
+							break;
+						case '+':
+							x = Number(x);
+							y = Number(y);
+							z = x + y;
+							number.value = z;
+							break;
+						case '-':
+							x = Number(x);
+							y = Number(y);
+							z = x - y;
+							number.value = z;
+							break;
+						case '%':
+							x = Number(x);
+							y = Number(y);
+							z = x % y;
+							number.value = z;
+							break;			
+					}		
+				}
+			}
+			document.querySelector(".btnClr").onclick = function(){
+				var number = document.querySelector(".number");
+				number.value = "0";
+			}
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>
