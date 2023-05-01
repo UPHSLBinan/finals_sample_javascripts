@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Erispe,MA: Slot Machine</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="toggleAudio()">
+	
+	<div class="main">
+		<div id="roulette">
+			<div id="slot1" class="a1"></div>		
+			<div id="slot2" class="a1"></div>	
+			<div id="slot3" class="a1"></div>
+		</div>
+	</div>
+	
+	<div class="buttons">
+		<div class="container">
+			<div class="bet-holder">
+				<form>
+					<input type="number" id="bet" name="bet" min="1" max="10">
+				</form>
+			</div>
+			
+			<div class="coins-holder">
+				<form>
+					<input type="number" value="20" id="coins" name="coins" min="20">
+				</form>
+			</div>
+			
+			<button onClick="doSlot()" id="btn" class="spin"><img src="spin.png" class="spin"></button>
+		
+			<div class="wins-holder">
+				<div class="wins" id="wins">0</div>
+			</div>
+
+			<div class="message-holder">
+				<div class="message" id="status">Welcome!</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
+    <script src="main.js" charset="utf-8"></script>
+</body>
+</html>

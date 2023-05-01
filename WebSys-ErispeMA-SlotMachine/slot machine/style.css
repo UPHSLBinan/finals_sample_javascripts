@@ -1,0 +1,218 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&display=swap');
+/* CSS Document */
+
+body {
+	background-position: center;
+	background-image: url("bg2.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.main{
+	margin-top: 7rem;
+	margin-bottom: 50px;
+}
+
+#roulette {
+  width: 660px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding: 20px;
+  overflow: hidden;
+  background: #D23369;
+  border-radius: 10px;
+  position: relative;
+}
+
+#holder1, #holder2, #holder3{
+	overflow: hidden;
+}
+
+#roulette > div {
+  float: left;
+  width: 200px;
+  margin: 10px;
+  height: 360px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #000 inset;
+  text-align: center;
+  line-height: 80px;
+  position: relative;
+}
+
+.buttons{
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-around;
+	height: 22vh;
+}
+
+.container{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+}
+
+button {
+	background: none;
+	border: none;
+}
+
+img.spin{
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: multiply;
+  	filter: contrast(1);
+	margin-top: 10px;
+}
+
+.bet-holder {
+	background-image: url('icons/bet1.png');
+	width: 13vw;
+	height: 14vh;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 90px;
+	margin-top: 10px;
+}
+
+input[type=number] {
+	font-family: 'Fira Sans';
+	font-size: 20px;
+	text-align: center;
+	box-sizing: border-box;
+	border-radius: 100px;
+	padding: 0 5px;
+	align-items: center;
+	justify-content: center;
+	margin-top: 25px;
+	width: 140px;
+	height: 30px;
+	border: none;
+}
+
+.coins-holder {
+	background-image: url('icons/coins1.png');
+	width: 13vw;
+	height: 14vh;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+input[type=text]{
+	font-family: 'Fira Sans';
+	font-size: 20px;
+	text-align: center;
+	box-sizing: border-box;
+	border-radius: 100px;
+	padding: 0 5px;
+	align-items: center;
+	justify-content: center;
+	margin-top: 25px;
+	width: 160px;
+	height: 30px;
+	border: none;
+}
+
+.wins-holder{
+	background-image: url('icons/wins1.png');
+	width: 13vw;
+	height: 14vh;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+div.wins {
+	background-color: #fff;
+	text-transform: uppercase;
+	font-family: 'Fira Sans';
+	font-size: 2rem;
+	font-weight: 700;
+	text-align: center;
+	width: 120px;
+	height: 32px;
+	margin-top: 20px;
+	padding: 0 5px;
+	border: none;
+	border-radius: 5px;
+}
+
+img.message{
+	width: 320px;
+	height: 100px;
+}
+
+.message-holder {
+	background-image: url('icons/message1.png');
+	width: 25vw;
+	height: 13.2vh;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+div.message {
+	background-color: #fff;
+	text-transform: uppercase;
+	font-family: 'Fira Sans';
+	font-size: 1.8rem;
+	font-weight: 700;
+	text-align: center;
+	width: 270px;
+	height: 32px;
+	margin-top: 20px;
+	padding: 0 5px;
+	border: none;
+	border-radius: 5px;
+}
+
+img.payout{
+	width: 150px;
+	height: 150px;
+}
+
+img.wins{
+	width: 190px;
+	height: 100px;
+}
+
+.a1 {
+	background-image: url("icons/fan1.png");
+}
+
+.a2 {
+	background-image: url("icons/headphones1.png");
+}
+
+.a3 {
+	background-image: url("icons/mic1.png");
+}
+
+.a4 {
+	background-image: url("icons/monitor1.png");
+}
+
+.a5 {
+	background-image: url("icons/mouse1.png");
+}
