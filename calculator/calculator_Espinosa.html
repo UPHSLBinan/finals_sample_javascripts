@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Windows 11 Calculator</title>
+    <link rel="stylesheet" href="calc.css">
+	  <script src="calc.js"></script>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="display">
+        <input type="text" id="result" value="0" readonly>
+      </div>
+      <div class="buttons">
+        <button onclick="clearDisplay()" class="gray">AC</button>
+        <button onclick="toggleSign()" class="gray">+/-</button>
+        <button onclick="percent()" class="gray">%</button>
+        <button onclick="addCharacter('/')" class="orange">÷</button>
+        <button onclick="addCharacter('7')">7</button>
+        <button onclick="addCharacter('8')">8</button>
+        <button onclick="addCharacter('9')">9</button>
+        <button onclick="addCharacter('*')" class="orange">×</button>
+        <button onclick="addCharacter('4')">4</button>
+        <button onclick="addCharacter('5')">5</button>
+        <button onclick="addCharacter('6')">6</button>
+        <button onclick="addCharacter('-')" class="orange">−</button>
+        <button onclick="addCharacter('1')">1</button>
+        <button onclick="addCharacter('2')">2</button>
+        <button onclick="addCharacter('3')">3</button>
+        <button onclick="addCharacter('+')" class="orange">+</button>
+        <button onclick="addCharacter('0')" class="wide">0</button>
+        <button onclick="addCharacter('.')" class="gray">.</button>
+        <button onclick="calculate()" class="green">=</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
