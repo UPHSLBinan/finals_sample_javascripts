@@ -1,66 +1,43 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Code Mania 10 Lucky Draw</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
-		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="style/main.css" type="text/css" media="screen" />	
-		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-		<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="bower_components/jquery-slotmachine/dist/jquery.slotmachine.min.js"></script>
-		<script type="text/javascript" src="script/main.js"></script>
-
+		<title>Slot Machine</title>
+    <meta charset="UTF-8">
+	<style>
+		.slot {
+			display: inline-block;
+			width: 80px;
+			height: 80px;
+			border: 1px solid black;
+            margin: -7px 0px 0px 0px;
+			text-align: center;
+			font-size: 40px;
+		}
+	</style>
 	</head>
-	<body>
-		<div class="line">
-			<div class="content">
-				<h1>Code Mania 10 Lucky Draw</h1>
-				<div class="machinewrapper">
-					<div id="machine1" class="slotMachine">
-						<div class="slot slot0"></div>
-						<div class="slot slot1"></div>
-						<div class="slot slot2"></div>
-						<div class="slot slot3"></div>
-						<div class="slot slot4"></div>
-						<div class="slot slot5"></div>
-						<div class="slot slot6"></div>
-						<div class="slot slot7"></div>
-						<div class="slot slot8"></div>
-						<div class="slot slot9"></div>
-					</div>
-					<div id="machine2" class="slotMachine">
-						<div class="slot slot0"></div>
-						<div class="slot slot1"></div>
-						<div class="slot slot2"></div>
-						<div class="slot slot3"></div>
-						<div class="slot slot4"></div>
-						<div class="slot slot5"></div>
-						<div class="slot slot6"></div>
-						<div class="slot slot7"></div>
-						<div class="slot slot8"></div>
-						<div class="slot slot9"></div>
-					</div>
-					<div id="machine3" class="slotMachine">
-						<div class="slot slot0"></div>
-						<div class="slot slot1"></div>
-						<div class="slot slot2"></div>
-						<div class="slot slot3"></div>
-						<div class="slot slot4"></div>
-						<div class="slot slot5"></div>
-						<div class="slot slot6"></div>
-						<div class="slot slot7"></div>
-						<div class="slot slot8"></div>
-						<div class="slot slot9"></div>
-					</div>	
-				</div>
-				<div class="content text-center">
-					<div id="slotMachineButtonShuffle" class="slotMachineButton">Start!</div>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>			
-		<div id="footer">
-		</div>
-	</body>
+
+	<body style="   ">
+		<div id="container">
+		   
+		   <div style="background-color: rgb(33 36 41);" >
+			   <h1 style="color: aliceblue; text-align: center;     padding: 14px 0px 0px 0px; font-size: 43px;     margin: 22px 0px 20px 0px;">🎰 JACKPOT 🎰 </h1>
+		   <h1 style="color: aliceblue; text-align: center;     padding: 0px 0px 0px 0px;     margin: -12px 0px 0px 0px;     font-size: 25px;">Slot Machine<hr></h1></div>
+		   <h1 style="color: #212429; text-align: center;     padding: 0px 0px 0px 0px;     margin: 10px 0px -25px 0px;     font-size: 25px;">Spin & Win!   </h1>
+		   <div id="slot-machine">
+			   <span id="slot1">0</span>
+			   <span id="slot2">0</span>
+			   <span id="slot3">0</span>
+		   </div>
+		   <p>Coins: <span id="coins">20 </span>💰</p>
+				  <label for="bet" >Bet: </label>
+				  <input type="number" id="bet" min="1" max="10">
+				  <p>(You can place your bets up to 10 bets)</p>
+				  
+				 
+				 <button onclick="spin()">Spin</button>
+		   <p id="result"></p>
+	   </div>
+	 
+	   <script src="slotmachine.js"></script>
+   </body>
 </html>
