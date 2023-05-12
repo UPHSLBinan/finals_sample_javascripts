@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slot Machine Game</title>
+    <style>
+      #slot1, #slot2, #slot3 {
+        display: inline-block;
+        font-size: 50px;
+        padding: 0 10px;
+        border: 5px solid black;
+        border-radius: 10px;
+        background-color: #fff;
+      }
+      
+      #slots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+      }
+      
+      #slots div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 20px;
+      }
+      
+      #slots div img {
+        width: 100px;
+        height: 100px;
+        margin: 10px 0;
+      }
+      
+      #slots div button {
+        padding: 10px 20px;
+        background-color: #f5af19;
+        border: 3px solid #b37700;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        cursor: pointer;
+      }
+      
+      #slots div button:hover {
+        background-color: #b37700;
+        border: 3px solid #f5af19;
+      }
+      
+      #result {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 20px 0;
+      }
+      
+      #coins, #bet {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      
+      h1 {
+        text-align: center;
+        font-size: 50px;
+        margin-bottom: 50px;
+        text-shadow: 2px 2px #000;
+      }
+      
+      .container {
+        width: 80%;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Slot Machine Game</h1>
+      <div id="slots">
+        <div>
+          <img src="cherry.png">
+          <span id="slot1"></span>
+        </div>
+        <div>
+          <img src="lemon.png">
+          <span id="slot2"></span>
+        </div>
+        <div>
+          <img src="orange.png">
+          <span id="slot3"></span>
+        </div>
+      </div>
+      <p>Coins: <span id="coins">20</span></p>
+      <p>Bet: <input type="number" id="bet" min="1" max="10" value="1"> <button onclick="spin()">Spin</button></p>
+      <p>Result: <span id="result"></span></p>
+    </div>
+    <script>
+      var coins = 20;
+      var slots = ['1', '2', '3', '4', '5'];
+      var payouts = {
+        '111': 2,
+       '222': 5,
+'333': 10,
+'444': 25,
+'555': 50,
+};
+ function spin() {
+    var bet = parseInt(document.getElementById('bet').value);
+    if (bet > coins) {
+      alert('Not enough coins!');
+      return;
+    }
+    coins -= bet;
+    document.getElementById('coins').textContent = coins;
+    
+    var spinResults = [];
+    for (var i = 0; i < 3; i++) {
+      var randomIndex = Math.floor(Math.random() * slots.length);
+      spinResults.push(slots[randomIndex]);
+    }
+    
+    document.getElementById('slot1').textContent = spinResults[0];
+    document.getElementById('slot2').textContent = spinResults[1];
+    document.getElementById('slot3').textContent = spinResults[2];
+    
+    var resultText = '';
+    if (spinResults[0] === spinResults[1] && spinResults[1] === spinResults[2]) {
+      resultText = 'You won ' + (bet * payouts[spinResults[0]+spinResults[1]+spinResults[2]]) + ' coins!';
+      coins += bet * payouts[spinResults[0]+spinResults[1]+spinResults[2]];
+    } else {
+      resultText = 'You lost!';
+    }
+    
+    document.getElementById('coins').textContent = coins;
+    document.getElementById('result').textContent = resultText;
+  }
+</script>
+  </body>
+</html>
+
+
+
+
