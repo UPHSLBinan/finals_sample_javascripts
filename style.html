@@ -1,0 +1,90 @@
+<style>
+#calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  margin: auto;
+}
+
+button {
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #fff;
+  color: #333;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  width: 50px;
+  height: 50px;
+}
+
+button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+#display {
+  grid-column: 1 / span 4;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: right;
+  padding: 10px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  height: 70px;
+  line-height: 70px;
+}
+</style>
+<div id="calculator">
+  <div id="display"></div>
+  <button onclick="addToDisplay('7')">7</button>
+  <button onclick="addToDisplay('8')">8</button>
+  <button onclick="addToDisplay('9')">9</button>
+  <button onclick="addToDisplay('/')">/</button>
+  <button onclick="addToDisplay('4')">4</button>
+  <button onclick="addToDisplay('5')">5</button>
+  <button onclick="addToDisplay('6')">6</button>
+  <button onclick="addToDisplay('*')">*</button>
+  <button onclick="addToDisplay('1')">1</button>
+  <button onclick="addToDisplay('2')">2</button>
+  <button onclick="addToDisplay('3')">3</button>
+  <button onclick="addToDisplay('-')">-</button>
+  <button onclick="addToDisplay('0')">0</button>
+  <button onclick="addToDisplay('.')">.</button>
+  <button onclick="calculate()">=</button>
+  <button onclick="addToDisplay('+')">+</button>
+  <button onclick="clearDisplay()">C</button>
+</div>
+<script>
+let displayValue = "";
+function addToDisplay(value) {
+displayValue += value;
+document.getElementById("display").innerHTML = displayValue;
+}
+
+function clearDisplay() {
+displayValue = "";
+document.getElementById("display").innerHTML = displayValue;
+}
+
+function calculate() {
+const result = eval(displayValue);
+displayValue = result.toString();
+document.getElementById("display").innerHTML = displayValue;
+}
+</script>
