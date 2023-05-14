@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Slot Machine</title>
+  <style>
+    /* CSS styles here */
+    .slots {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .slot {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+      margin-right: 10px;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .coins {
+      margin-top: 10px;
+    }
+
+    #result {
+      margin-top: 10px;
+    }
+
+    .spin {
+      animation: spin 1s ease-in-out forwards;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-50px);
+      }
+      100% {
+        transform: translateY(-100px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="slot-machine">
+    <div class="slots">
+      <div class="slot" id="slot-1"></div>
+      <div class="slot" id="slot-2"></div>
+      <div class="slot" id="slot-3"></div>
+    </div>
+    <div class="controls">
+      <label>Bet:</label>
+      <input type="number" min="1" max="10" value="1" id="bet-input">
+      <button id="spin-btn">Spin</button>
+      <div class="coins">
+        <span>Coins:</span>
+        <span id="coin-count">20</span>
+      </div>
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script>
+    // Define the icons
+    const icons = ['A', 'B', 'C', 'D', 'E'];
+
+    // Define the winning combinations
+    const winnings = [
+      {icons: ['A', 'A', 'A'], multiplier: 2},
+      {icons: ['B', 'B', 'B'], multiplier: 3},
+      {icons: ['C', 'C', 'C'], multiplier: 4},
+      {icons: ['D', 'D', 'D'], multiplier: 5},
+      {icons: ['E', 'E', 'E'], multiplier: 10},
+    ];
+
+    // Get the DOM elements
+    const slotMachineEl = document.getElementById('slot-machine');
+    const slotsEl = document.querySelector('.slots');
+    const slotEls = slotsEl.querySelectorAll('.slot');
+    const betInputEl = document.getElementById('bet-input');
+    const spinBtnEl = document.getElementById('spin-btn');
+    const coinCountEl = document.getElementById('coin-count');
+    const resultEl = document.getElementById('result');
+
+    // Set the initial state
+    let coins = 20;
+    let isSpinning = false;
+
+    // Function to generate a random icon
+    function getRandomIcon() {
+      return icons[Math.floor(Math.random() * icons.length)];
+    }
+
+    // Function to spin the slots
+    function spin() {
+      // Check if the player has enough coins to make the bet
+      const bet = parseInt(betInputEl.value);
+      if (coins < bet) {
+        resultEl.textContent = 'Not enough coins to make the bet.';
+        return;
+      }
+
+      // Update the state
+      coins -= bet;
+      coinCountEl.textContent = coins;
+
+     
+// Check if the player has enough coins to make the bet
+const bet = parseInt(betInputEl.value);
+if (isNaN(bet) || bet < 1 || bet > 10) {
+resultEl.textContent = 'Invalid bet amount.';
+return;
+}
+if (coins < bet) {
+resultEl.textContent = 'Not enough coins.';
+return;
+}
+
+// Deduct the bet amount from the player's coins
+coins -= bet;
+coinCountEl.textContent = coins;
+
+// Set the state to spinning
+isSpinning = true;
+
+// Clear the result text
+resultEl.textContent = '';
+
+// Spin each slot
+slotEls.forEach((slotEl, index) => {
+ 
+const icon = getRandomIcon();
+const slotEl = document.querySelector('.slot');
+slotEl.style.backgroundImage = 'url("SlotMachine/bg.jpeg")';
+	
+	 
+slotEl.classList.add('spin');
+
+ 
+setTimeout(() => {
+  slotEl.classList.remove('spin');
+ 
+  if (index === slotEls.length - 1) {
+    checkResult();
+  }
+}, 1000);
+});
+}
+ 
+function checkResult() {
+ 
+const icons = Array.from(slotEls).map(slotEl => {
+const url = slotEl.style.backgroundImage;
+return url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
+});
+
+ 
+let winningMultiplier = 0;
+winnings.forEach(combination => {
+if (combination.icons.every((icon, index) => icon === icons[index])) {
+winningMultiplier = combination.multiplier;
+}
+});
+
+ const winnings = betInputEl.value * winningMultiplier;
+if (winningMultiplier > 0) {
+resultEl.textContent = You won ${winnings} coins!;
+coins += winnings;
+} else {
+resultEl.textContent = 'Try again!';
+}
+coinCountEl.textContent = coins;
+
+ 
+isSpinning = false;
+}
+ 
+spinBtnEl.addEventListener('click', () => {
+ 
+if (isSpinning) {
+return;
+}
+
+ 
+spin();
+});
+	       
+    slotEls.forEach(slotEl => {
+      
+      slotEl.classList.remove('spin');
+
+     
+      const icon = getRandomIcon();
+
+      
+      setTimeout(() => {
+        slotEl.classList.add(icon);
+      }, 100);
+
+       
+      setTimeout(() => {
+        slotEl.classList.add('spin');
+      }, 200);
+    });
+
+     
+    setTimeout(() => {
+      checkResult();
+    }, 1500);
+  }
+}
+});
+});
+
+ 
+function checkResult() {
+ 
+const icons = Array.from(slotEls).map(slotEl => slotEl.classList[1]);
+
+ 
+const winningCombo = winnings.find(combo => {
+return combo.icons.every((icon, index) => icon === icons[index]);
+});
+
+ 
+if (winningCombo) {
+const payout = winningCombo.multiplier * parseInt(betInputEl.value);
+coins += payout;
+resultEl.innerHTML = You won ${payout} coins!;
+} else {
+coins -= parseInt(betInputEl.value);
+resultEl.innerHTML = 'Sorry, try again!';
+}
+ 
+coinCountEl.innerHTML = coins;
+ 
+setTimeout(() => {
+betInputEl.value = 1;
+resultEl.innerHTML = '';
+isSpinning = false;
+}, 2000);
+}
+	</script>
+</body>
+</html>
