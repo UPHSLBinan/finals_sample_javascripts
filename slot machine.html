@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple Slot Machine</title>
+	<style type="text/css">
+		body {
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h1>Simple Slot Machine</h1>
+	<p>Coins: <span id="coins">20</span></p>
+	<p>Bet: <input type="number" id="bet" min="1" max="10" value="1"></p>
+	<p><button onclick="spin()">Spin</button></p>
+	<div id="slots">
+		<div id="slot1"></div>
+		<div id="slot2"></div>
+		<div id="slot3"></div>
+	</div>
+	<p id="result"></p>
+	<script type="text/javascript" src="slot-machine.js"></script>
+</body>
+</html>
