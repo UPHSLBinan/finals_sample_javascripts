@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slot Machine</title>
+  <style>
+    .slot-machine {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .slot-machine img {
+      width: 150px;
+      height: 150px;
+      margin: 10px;
+    }
+    .button {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slot-machine">
+    <img id="slot1" src="images/seven.png">
+    <img id="slot2" src="images/seven.png">
+    <img id="slot3" src="images/seven.png">
+	  
+    <button class="button" onclick="spin()">Spin</button>
+  </div>
+
+  <script>
+    // Array of slot images
+    var slotImages = [
+      "bomb.png",
+      "slot2.png",
+      "slot3.png"
+    ];
+
+    // Function to randomly change the slot images
+    function spin() {
+      var slot1 = document.getElementById("s");
+      var slot2 = document.getElementById("slot2");
+      var slot3 = document.getElementById("slot3");
+
+      var randomIndex1 = Math.floor(Math.random() * slotImages.length);
+      var randomIndex2 = Math.floor(Math.random() * slotImages.length);
+      var randomIndex3 = Math.floor(Math.random() * slotImages.length);
+
+      slot1.src = slotImages[randomIndex1];
+      slot2.src = slotImages[randomIndex2];
+      slot3.src = slotImages[randomIndex3];
+    }
+  </script>
+</body>
+</html>
