@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slot Machine</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Roboto');
+		@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+		a {
+			color: #FF5722;
+			text-decoration: none;
+		}
+
+		h3 {
+			margin-top: 12px;
+		}
+
+		* {
+			margin: 0px;
+		}
+
+		body {
+			background-color: #F9F9F9;
+			font-family: 'Arial', sans-serif;
+		}
+
+		main {
+			border-radius: 5px;
+			background-color: #F5F5F5;
+			margin-top: 30px;
+			padding: 20px;
+			margin-left: calc((100% - 580px) / 2);
+			width: 550px;
+		}
+
+		section#status {
+			margin-bottom: 25px;
+			padding: 25px;
+			border-radius: 5px;
+			text-align: center;
+			background-color: #3F51B5;
+			color: #FFFFFF;
+			font-size: 25px;
+			font-family: 'Roboto Mono', monospace;
+		}
+
+		section#Slots {
+			display: flex;
+			justify-content: center;
+			border-radius: 15px;
+			background-color: #E0E0E0;
+			margin-top: 20px;
+			padding: 20px;
+		}
+
+		section#Gira {
+			margin-top: 25px;
+			padding-top: 25px;
+			padding-bottom: 25px;
+			border-radius: 5px;
+			text-align: center;
+			background-color: #673AB7;
+			color: #FFFFFF;
+			font-size: 25px;
+			cursor: pointer;
+		}
+
+		section#Gira:hover {
+			background-color: #9575CD;
+		}
+
+		section#options {
+			margin-top: 20px;
+			padding-top: 5px;
+			border-radius: 5px;
+			background-color: #D32F2F;
+			color: #FFFFFF;
+		}
+
+		.option {
+			padding-left: 5px;
+		}
+
+		section#info {
+			background-color: #757575;
+			padding-left: 12px;
+			padding-bottom: 12px;
+			border-radius: 5px;
+			overflow: hidden;
+			animation-duration: 1s;
+			color: #9E9E9E;
+			margin-top: 50px;
+			margin-left: 30%;
+			margin-right: 30%;
+			display: none;
+		}
+
+		#slot1,
+		#slot2,
+		#slot3 {
+			display: inline-block;
+			margin: 5px;
+			background-size: 150px;
+			width: 150px;
+			height: 150px;
+		}
+
+		.tile1 {
+			background-image: url("image/tiles/seven.png");
+		}
+
+		.tile2 {
+			background-image: url("image/tiles/cherries.png");
+		}
+
+		.tile3 {
+			background-image: url("image/tiles/club.png");
+		}
+
+		.tile4 {
+			background-image: url("image/tiles/diamond.png");
+		}
+
+		.tile5 {
+			background-image: url("image/tiles/heart.png");
+		}
+
+		.tile6 {
+			background-image: url("image/tiles/spade.png");
+		}
+	</style>
+</head>
+<body onload="toggleAudio()">
+	<main>
+		<section id="status">WELCOME!</section>
+		<section id="Slots">
+			<div id="slot1" class="tile1"></div>
+			<div id="slot2" class="tile2"></div>
+			<div id="slot3" class="tile3"></div>
+		</section>
+		<section onclick="doSlot()" id="Gira">TAKE A SPIN!</section>
+	</main>
+	<section id="info">
+		<h3>Come si Gioca?</h3>
+		<p>Tenta la tua fortuna premendo il bottone! Il Jolly vale l'elemento mancante per vincere. Tre elementi uguali e vinici! Ma attenzione, non prendere tre Jolly o perderai!</p>
+		<h3>Licenza</h3>
+		<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licenza Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale</a>.</p>
+	</section>
+	<script>
+		// Function to generate a random number between 1 and 6
+		function getRandomNumber() {
+			return Math.floor(Math.random() * 6) + 1;
+		}
+
+		// Function to set the background image of a slot element based on the tile number
+		function setSlotBackground(slotId, tileNumber) {
+			var slot = document.getElementById(slotId);
+			slot.className = "tile" + tileNumber;
+		}
+
+		// Function to simulate the spinning animation of the slots
+		function spinSlots() {
+			var slot1 = document.getElementById("slot1");
+			var slot2 = document.getElementById("slot2");
+			var slot3 = document.getElementById("slot3");
+
+			var interval = setInterval(function () {
+				var tile1 = getRandomNumber();
+				var tile2 = getRandomNumber();
+				var tile3 = getRandomNumber();
+
+				setSlotBackground("slot1", tile1);
+				setSlotBackground("slot2", tile2);
+				setSlotBackground("slot3", tile3);
+			}, 100);
+
+			// Stop the spinning after 2 seconds
+			setTimeout(function () {
+				clearInterval(interval);
+				checkWin();
+			}, 2000);
+		}
+
+		// Function to check if the player wins or loses
+		function checkWin() {
+			var slot1 = document.getElementById("slot1").className;
+			var slot2 = document.getElementById("slot2").className;
+			var slot3 = document.getElementById("slot3").className;
+
+			if (slot1 === slot2 && slot2 === slot3) {
+				document.getElementById("status").textContent = "YOU WIN!";
+			} else {
+				document.getElementById("status").textContent = "YOU LOSE!";
+			}
+		}
+
+		// Function to handle the button click event
+		function doSlot() {
+			document.getElementById("status").textContent = "SPINNING...";
+			spinSlots();
+		}
+
+
+		// Function to show/hide the information section
+		function toggleInfo() {
+			var info = document.getElementById("info");
+			if (info.style.display === "none") {
+				info.style.display = "block";
+			} else {
+				info.style.display = "none";
+			}
+		}
+	</script>
+</body>
+</html>
