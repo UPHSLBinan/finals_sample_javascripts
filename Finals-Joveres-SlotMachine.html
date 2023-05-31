@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> Slot Machine </title>
+  <style> 
+    h1 {
+      font-size: 70px;
+    }
+    body {
+	 
+      text-align: center;
+    }
+    #slots span {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      background-color: black;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 30px;
+      line-height: 50px;   
+    }  
+    p {
+      font-size: 30px;
+    }
+    label {
+      font-size: 30px; 
+    }
+    input[type="number"] {
+      font-size: 30px;
+    }
+    button#spin {
+      font-size: 30px;
+    } 
+ }  
+    p1 {
+      font-size: 50px;
+    }
+
+    #slots span {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      margin: 30px;
+      background-color:#00E2FD;
+      border-radius: 20px;
+      text-align: center;
+      font-size: 80px;
+      line-height: 60px;  
+    }   
+  p {
+      font-size: 50px;
+    }  
+  </style>  
+</head> 
+<body> 
+	
+  <h1>&#127920
+ Slot Machine &#127920
+</h1>
+  <p>Coins : <span id="coins">20</span></p>
+  <label for="bet">Bet :</label>
+  <input type="number" id="bet" min="1" max="10" value="1">
+  <button id="spin">Spin</button> 
+  <div id="slots">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <p id="result"></p> 
+<script>
+  const coinsElement = document.getElementById('coins');
+  const betElement = document.getElementById('bet');
+  const spinButton = document.getElementById('spin');
+  const slots = document.getElementById('slots').querySelectorAll('span');
+  const resultElement = document.getElementById('result');
+
+  let coins = 20;
+  let symbols = ['1', '2', '3', '6', '7'];
+  let winnings = {
+    '333': 2,
+    '222': 3,
+    '111': 4,
+    '666': 5,
+    '777': 10,
+  };
+
+  function spin() {
+    const bet = parseInt(betElement.value);
+    if (coins < bet) {
+      resultElement.textContent = 'Sorry you dont have enough coins to bet \ud83d\ude22 \ud83d\ude22';
+      return;
+    }
+    coins -= bet;
+    coinsElement.textContent = coins;
+    for (let i = 0; i < 3; i++) {
+      const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+      slots[i].textContent = symbol;
+    }
+    const combination = slots[0].textContent + slots[1].textContent + slots[2].textContent;
+   if (winnings.hasOwnProperty(combination)) {
+  const win = bet * winnings[combination];
+  coins += win;
+  coinsElement.textContent = coins;
+  resultElement.textContent = `You're a winner! You won ${win} coins with ${combination}\ud83c\udf89`;
+}
+else {
+      resultElement.textContent = 'Try again \ud83d\ude22'; 
+
+    } 	
+  }
+
+  spinButton.addEventListener('click', spin);  
+</script>
+</body> 
+</html>
